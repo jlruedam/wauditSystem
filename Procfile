@@ -1,1 +1,1 @@
-web: gunicorn wauditSystem.wsgi
+web: gunicorn wauditSystem.wsgi --log-file -
