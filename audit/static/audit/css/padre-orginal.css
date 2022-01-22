@@ -1,0 +1,178 @@
+
+html{
+    background-color:#F8F8FF;/*Interesante este color*/
+}
+
+#central{
+    display:flex;
+}
+
+#menuPrincipal{
+   
+    width: 30%;
+    height: 100%;
+    margin: 5px;
+    display: block;
+    
+}  
+
+#menuPrincipal p{
+
+    align-items: center;   
+}
+
+#menuPrincipal h1{
+
+    text-align: center;
+    color: #00356f;
+    border-bottom: 1px solid #fcbf00;   
+}
+
+
+#menuPrincipal a {
+    
+    padding: 15px 10px;
+    border-radius: 10px;
+    background-color:#00356f;
+    color:white;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-family: helvetica, arial;
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);     
+}
+
+
+#menuPrincipal a:hover {
+    background-color: #fcbf00;
+}
+#menuPrincipal a:active {
+    background-color:greenyellow;
+}
+       
+#panelSuperior{
+
+    border: 2px solid #fcbf00;
+    margin: 2px;
+    border-radius:10px;
+    text-align: center;
+    background-color:#00356f;
+    color:white;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    box-shadow: -10px 16px 10px -6px rgb(0 0 0)
+
+} 
+
+#panelInferior{
+    border-top: 1px solid #fcbf00;
+    margin: 5px;
+    display: block;
+    text-align: center;
+    /*background-color:#00356f;*/
+    color:#00356f;
+}
+
+#panelCambiante{
+    /*border: 1px solid black;*/
+    width: 75%;
+    height: 100%;
+    margin: 25px;
+    padding:15px;  
+}
+
+
+#panelCambiante h2{
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    color: #00356f;
+}
+
+
+
+
+#contenidoFormularioAuditoriaUniverso {
+    justify-content: space-around;
+    display: flex;
+    align-content: flex-end;
+    
+}
+
+
+#contenidoFormularioAuditoriaUniverso table, tr, td{
+    border: 1px solid #fcbf00;
+    border-style:dotted;
+    border-collapse: collapse;
+    text-align: center;
+    text-transform: uppercase;
+   
+}
+
+#contenidoFormularioAuditoriaUniverso table{
+    
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+    
+}
+
+
+
+
+/*****************************/
+/*******Crear Audiotría*******/
+/*****************************/
+#panelCambiante #crearA {
+    /*border: 1px solid #fcbf00;*/
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border-top:1px solid #fcbf00;
+    border-bottom:1px solid #fcbf00;*/
+    margin-bottom:20px;
+}
+
+#panelCambiante #crearA a{
+    padding: 15px 10px;
+    border-radius: 10px;
+    background-color:#00356f;
+    color:white;
+    text-decoration: none;
+    text-align: center;
+    font-family: helvetica, arial;
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+    width: 250px;
+    
+     
+}
+
+#panelCambiante #crearA a:hover {
+    background-color: #fcbf00;
+}
+
+#panelCambiante #crearA a:active {
+    background-color:greenyellow;
+}
+
+#panelCambiante #TablaCrearAudit1 tr,td{
+    /*border: 1px solid #fcbf00;*/
+    padding: 5px;
+}
+#panelCambiante #TablaCrearAudit1 label, select, input{
+    text-align: center;
+    display:flow-root;
+    min-width: -webkit-fill-available;
+    
+}
+#panelCambiante #TablaCrearAudit2 #botonG{
+    border-radius: 10px solid #fcbf00;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+    
+
+
+
+
