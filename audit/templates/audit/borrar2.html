@@ -1,0 +1,116 @@
+
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+    <div>
+    {% include "barraGestionAudit.html" %}
+    </div>
+    <div id="FormAudit">
+
+    <fieldset>
+        <legend>DATOS GENERALES</legend>  
+        <form method="GET" action="/guardarAuditoria/">
+
+            <div>
+                <label for="fechaAudit">Fecha Auditoría: </label>
+                <input type="date" id="fechaAudit"/>
+            </div>
+
+            <div>
+                <label for="Auditores">Auditor: </label>
+                <select name="Auditores" id="Auditores">
+                    <option value="Auditor1">Radamel Falcao Garcia</option>
+                    <option value="Auditor2">James Rodriguez</option>
+                    <option value="Auditor3">Juan Guillermo Cuadrado</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="Zonas">Zonas: </label>
+                <select name="Zonas" id="Zonas">
+                    <option value="Costa1">Costa 1</option>
+                    <option value="Costa2">Costa 2</option>
+                    <option value="Centro">Centro </option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="Departamentos">Departamento: </label>
+                <select name="Departamento" id="Departamento">
+                    <option value="departamento">Cesar</option>
+                    <option value="departamento">Santander</option>
+                    <option value="departamento">Bolívar</option> </option>
+                </select>
+            </div>
+
+            <div>
+                <label for="Municipio">Municipios: </label>
+                <select name="Municipios" id="Municipios">
+                    <option value="Auditor1">Valledupar</option>
+                    <option value="Auditor2">Bucaramanga</option>
+                    <option value="Auditor3">Cartagena</option>
+                </select>
+            </div>
+    </fieldset>
+    <fieldset>
+        <legend>DATOS AUDITORÍA</legend>  
+            <div>
+                <label for="TipoAudit">Tipo Auditoría: </label>
+                <select name="TipoAudit" id="TipoAudit">
+                    <option value="Plan">Plan de auditoría</option>
+                    <option value="Especial">Auditoría especial</option>
+                    <option value="Apoyo">Apoyo otras dependencias</option>
+                </select>
+            </div>
+            <div>
+                <label for="grupoAudit">Grupo Auditoría: </label>
+                <select name="grupoAudit" id="grupoAudit">
+                    <option value="individual">Actividad individual</option>
+                    <option value="Grupo">Actividades grupal</option>
+                    <option value="Asistencia">Apoyo/Asistencia</option>
+                </select>
+            </div>
+            <div>
+                <label for="codigoAudit">Código Auditoría: </label>
+                <select name="codigoAudit" id="codigoAudit">
+                
+                    <option value="A01">Auditoría-01</option>
+                    <option value="A02">Auditoría-02</option>
+                    <option value="A03">Auditoría-03</option>
+                </select>
+            </div>
+
+            
+            <div id="DesAudit">
+                <label for "DesAudit">Auditoría:</label>
+                <p>
+                    Aquí debe ir el contenido el nombre de la auditoría según lo creado en el universo auditable.<br/>
+                    Aenean ornare placerat accumsan. Vivamus vel convallis odio, vitae vulputate lorem. Nullam vehicula tempor lectus vitae maximus. Fusce hendrerit leo et elit hendrerit hendrerit. Nullam bibendum urna facilisis justo pellentesque ornare. Nam at enim vel tortor consequat ultrices. Quisque fermentum lobortis sodales. Aliquam vel feugiat tellus, vitae ultrices purus. Curabitur quis dui sit amet lorem hendrerit imperdiet non pharetra magna. Nunc in vehicula felis. Suspendisse potenti.
+                <p>
+            </div>
+            
+            <div id="ActAudit">
+                <label for "ActAudit">Actividad:</label>
+                <p>
+                    Aquí debe ir el del detalle de las activiades que se deberían incluir dentro la Auditoría.<br/>
+                    Aenean ornare placerat accumsan. Vivamus vel convallis odio, vitae vulputate lorem. Nullam vehicula tempor lectus vitae maximus. Fusce hendrerit leo et elit hendrerit hendrerit. Nullam bibendum urna facilisis justo pellentesque ornare. Nam at enim vel tortor consequat ultrices. Quisque fermentum lobortis sodales. Aliquam vel feugiat tellus, vitae ultrices purus. Curabitur quis dui sit amet lorem hendrerit imperdiet non pharetra magna. Nunc in vehicula felis. Suspendisse potenti.
+                <p>
+            </div>
+            
+            <div id="DetalleAudit">
+                <label for "DesAcitividad">Detalle Actividad:</label><br/>
+                <textarea name="DesAcitividad" rows="10" cols="120"></textarea>
+                <br/>
+                <input type="submit" value="Guardar"/>
+            </div>
+
+        </fieldset>
+        </form>
+    
+    </div>
+    
+{% endblock %}

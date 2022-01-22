@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WAUDIT</title>
+    <link rel="stylesheet" href="{% static './audit/css/padre.css'%}"/>
+    <!--Para que pueda tomar la plantilla se debe crear un directorio llamado Templates-->
+    <!--Para que pueda tomar el archivo css se debe crear un directorio llama static y meter los archivos css dentro-->
+</head>
+
+<body>
+
+    
+    <div id="panelSuperior">
+        <p>SISTEMA DE GESTIÓN DE AUDITORÍAS DE CONTROL INTERNO</p>
+
+    </div>
+
+
+    <div id="central">
+       
+        <div id="menuPrincipal">
+            <br/><br/>
+            <h1>W-AUDIT</h1>
+            <p><a href="">AUDITORÍAS</a></p>
+            <p><a href="planesMejora.html">PLANES DE MEJORA</a></p>
+            <p><a href="">UNIVERSO AUDITABLE</a></p>
+            <p><a href="controlInterno.html">CONTROL INTERNO</a></p>
+            <p><a href="Informes.html">INFORMES</a></p>
+            <p><a href="auditados.html">AUDITADOS</a></p>
+
+        </div>
+        
+        
+        <div id="panelCambiante">
+        {% block content %}
+             {% include "audit/barraGestionAudit.html" %}
+            <p>
+                Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
+                De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
+            </p>
+
+        {% endblock %}
+        </div>
+        
+    </div>
+
+                        
+
+    <div id="panelInferior">
+        <p><h1><i>"Lo Mejor está por venir..."</i></h1></p>
+
+    </div>
+
+    
+</body>
+</html>

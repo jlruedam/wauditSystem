@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    {% include "barraGestionAudit.html" %}
+
+    <h3>Filtros</h3>
+    <div>
+        Aqui va podría ir unos campos para requerir ciertos filtros de busqueda.
+
+
+        despues puede ir una tabla con campos principales y opciones de ver, editar, eliminar, agregar hallazgo,
+
+        <form>
+            <table id="FiltrosAudit" >
+                <tr>
+                    <td>
+                        <label for="codigoAudit">Busqueda x Código: </label>
+                    </td>
+                    <td>
+                        <select name="codigoAudit" id="codigoAudit">
+                            <option value="A01">Auditoría-01</option>
+                            <option value="A02">Auditoría-02</option>
+                            <option value="A03">Auditoría-03</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <table style="border: 1px solid black">
+            {% for a in codigo %}
+                <tr>
+                    <th>ID Auditoría</th>
+                    <th>Fecha ejecución</th>
+                    <th>Auditor</th>
+                    <th>Código</th>
+                    <th>Actividad</th>
+                    <th>Alias</th>
+                    <th>Causa</th>
+                    <th>Acciones</th>
+                <tr>
+                    <td>{{a}}</td>
+                    <td>02/07/2021</td>
+                    <td>Jorge Rueda</td>
+                    <td>{{a}}</td>
+                    <td>Actividad-{{a}}</td>
+                    <td>Alias-{{a}}</td>
+                    <td>Causa-{{a}}</td>
+                    <td><a>Ver</a><br/><a>Editar</a><br/><a>Eliminar</a><br/></td>
+                    
+                </tr>
+
+            {% endfor %}
+        </table>
+
+    </div>
+
+
+    
+    
+{% endblock %}
