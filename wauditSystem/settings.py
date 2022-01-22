@@ -9,28 +9,29 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
-from pathlib import Path
 import os
-
+import sys
+import dj_database_url
+from pathlib import Path
+from django.core.management.utils import get_random_secret_key
 from django.conf import settings
-import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR =  Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ah9llzi(x=we+vcbc#a29-gy*xd4*-5z2h(rq5l2dcvolruf+n'
-
+# SECRET_KEY = 'django-insecure-ah9llzi(x=we+vcbc#a29-gy*xd4*-5z2h(rq5l2dcvolruf+n'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['https://wauditsystem.herokuapp.com/','localhost']
+DEBUG =  os.getenv("DEBUG", "False") == "True"
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
 # Application definition
@@ -79,13 +80,20 @@ WSGI_APPLICATION = 'wauditSystem.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
 
 
 # Password validation
@@ -123,16 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-###AGREGADAS
-#STATIC_ROOT=os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
-############
+
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
