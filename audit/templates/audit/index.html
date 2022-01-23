@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WAUDIT</title>
+    <link rel="stylesheet" href="{% static './audit/css/normalize.css'%}"/>
     <link rel="stylesheet" href="{% static './audit/css/style.css'%}"/>
     <!--Para que pueda tomar la plantilla se debe crear un directorio llamado Templates-->
     <!--Para que pueda tomar el archivo css se debe crear un directorio llama static y meter los archivos css dentro-->
@@ -17,41 +18,38 @@
             SISTEMA DE GESTIÓN DE AUDITORÍAS DE CONTROL INTERNO
         </h1>
     </header>
-    <main>
-        <aside>
-            <h1>W-AUDIT</h1>
-            <nav>
-                <ul>
-                    <li><button></button></li>
+    <main class="main">
+        <aside class="aside">
+            <h1 class="aside__title">W-AUDIT</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="">AUDITORÍAS</a></button></li>
+                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="planesMejora.html">PLANES DE MEJORA</a></button></li>
+                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="">UNIVERSO AUDITABLE</a></button></li>
+                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="controlInterno.html">CONTROL INTERNO</a></button></li>
+                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="Informes.html">INFORMES</a></p></button></li>
+                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="auditados.html">AUDITADOS</a></button></li>
                 </ul>
             </nav>
         </aside>
+        <section class="panel-section">
+            
+            <div id="panelCambiante">
+                {% block content %}
+                     {% include "audit/barraGestionAudit.html" %}
+                    <p>
+                        Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
+                        De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
+                    </p>
+        
+                {% endblock %}
+            </div>
+
+            
+        </section>
     </main>
     <div id="central">
        
-        <div id="menuPrincipal">
-            <br/><br/>
-            <h1>W-AUDIT</h1>
-            <p><a href="">AUDITORÍAS</a></p>
-            <p><a href="planesMejora.html">PLANES DE MEJORA</a></p>
-            <p><a href="">UNIVERSO AUDITABLE</a></p>
-            <p><a href="controlInterno.html">CONTROL INTERNO</a></p>
-            <p><a href="Informes.html">INFORMES</a></p>
-            <p><a href="auditados.html">AUDITADOS</a></p>
-
-        </div>
-        
-        
-        <div id="panelCambiante">
-        {% block content %}
-             {% include "audit/barraGestionAudit.html" %}
-            <p>
-                Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
-                De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
-            </p>
-
-        {% endblock %}
-        </div>
         
     </div>
 
