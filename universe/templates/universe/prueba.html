@@ -8,5 +8,30 @@
 </head>
 <body>
     <h1>This is the Universe</h1>
+    <p>Las persona son:</p>
+    {% for persona in dataPersonas %}
+        <p>{{persona.name}} {{persona.lastname}}</p>
+    {% endfor %}
+    <br/>
+    <br/>
+    <form action="/cargarPersona/" method="GET" id="formPersonas">{% csrf_token %}
+        
+        <label for="id_user">
+            <span>id:</span> 
+            <input type="text" name="id_user" id="id_user"> <br/>
+        </label>
+        <label for="name">
+            <span>Nombre:</span>  
+            <input type="text" name="name" id="name"><br/>
+        </label>
+        <label for="lastname">
+            <span>Apellidos: </span>
+            <input type="text" name="lastname" id="lastname"><br/>
+        </label>
+        <label for="email">
+            Correo: <input type="email" name="email" id="imail"><br/>
+        </label>
+        <input type="submit" value="Cargar" id="cargarPersona"/> <br/>
+    </form>
 </body>
 </html>

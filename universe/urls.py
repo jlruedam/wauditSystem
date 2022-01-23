@@ -4,4 +4,5 @@ from universe import views
 urlpatterns = [
     path('prueba/',views.prueba),
     path('universe/',views.universeAudit, name='universeAudit'),
+    path('cargarPersona/',views.cargarPersona, name='cargarPersona')
 ]
