@@ -33,33 +33,20 @@
             </nav>
         </aside>
         <section class="panel-section">
-            
-            <div id="panelCambiante">
-                {% block content %}
-                     {% include "audit/barraGestionAudit.html" %}
-                    <p>
-                        Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
-                        De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
-                    </p>
-        
-                {% endblock %}
-            </div>
+            {% block content %}
+                {% include "audit/menuManageAudit.html" %}
+                <p>
+                    Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
+                    De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
+                </p>
 
-            
+            {% endblock %}
         </section>
     </main>
-    <div id="central">
-       
-        
-    </div>
-
                         
-
-    <div id="panelInferior">
+    <footer class="footer">
         <p><h1><i>"Lo Mejor está por venir..."</i></h1></p>
-
-    </div>
-
+    </footer>
     
 </body>
 </html>
