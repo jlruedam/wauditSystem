@@ -1,0 +1,96 @@
+{% extends "audit/index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "universe/menuUniverseAudit.html" %}
+
+<!--Formulario Agregar Proceso-->
+    
+    <script>
+        function funcion2() {
+            document.getElementById("formalarioCargarProceso").action="/GuardarProcesosAuditar/";
+        }
+    </script>
+
+    
+    <form method="GET" action="/cargarGestionResponsableUniverso/" id="formalarioCargarProceso">
+
+    <fieldset>
+        <legend><h3>Agregar proceso:</h3></legend>
+        <label for="gestionResponsable">Gestión responsable:</Label>
+        <select name="gestionResponsable" id="gestionResponsable" onselect="funcion2()">
+        {%for g in dataGestion%}
+            <option value={{g.responsable}}>{{g.responsable}}</option>
+        {% endfor %}
+        </select>
+
+        <input type="submit" value="Cargar" id="CargarGestionResponsable"/>
+        <br/>
+
+        <label for="gestionElegida">Gestión responsable seleccionada:</label>
+
+        <input type="text" name="gestionElegida" id="gestionElegida" value={{gResponsable}}>
+        <label for="macroprocesosUniverso">Macroprocesos de la Gestión responsable:</label>
+        <select name="macroprocesosUniverso" id="macroprocesosUniverso">
+        {%for m in macroProcesosCargar%}
+            <option value={{m.macroproceso}}>{{m.macroproceso}}</option>
+        {% endfor %}
+        </select>
+    
+        <label for="procesosUniversoCargar">Procesos a cargar:</Label>
+        <input type="text" name="procesosUniversoCargar" id="procesosUniversoCargar"/>
+
+        <input type="submit" value="Guardar" id="GuardarGestionResponsable" onclick="funcion2()"/>
+
+        
+        <p> {{mensajeProceso}} </p>
+      
+      
+    </fieldset>
+    </form>
+
+    <!--Formulario Agregar Macroproceso-->
+    <form method="GET" action="/GuardarMacroprocesosAuditar/">
+    <fieldset>
+        <legend><h3>Agregar macroproceso:</h3></legend>
+            <label for="gestionResponsable">Gestión responsable:</Label>
+            <select name="gestionResponsable" id="gestionResponsable">
+                {%for g in dataGestion%}
+                    <option value={{g.responsable}}>{{g.responsable}}</option>
+                {% endfor %}
+            </select>
+            <label for="macroprocesosUniverso">Macroproceso:</Label>
+            <input type="text" name="macroprocesosUniverso" id="macroprocesosUniverso"/>
+            <input type="submit" value="Guardar" id="botonGuardarMacroprocesosUniverso"/>
+    </fieldset> 
+    <br/>
+    </form>
+
+
+
+    
+    <!--Formulario Agregar gestión responsable-->
+    
+    <form method="GET" action="/GuardarGestionResponsable/">
+    <fieldset>
+        <legend><h3>Agregar gestión responsable:</h3></legend>
+            <label for="gestionResponsableMacro">Nueva gestión:</Label>
+            <input type="text" name="gestionResponsableMacro"/>
+            <input type="submit" value="Guardar" id="botonGuardarGestionResponsable"/>
+    </fieldset>
+    </form><br/>
+
+    
+    
+    
+    
+    
+    
+            
+    
+    
+    
+{% endblock %}

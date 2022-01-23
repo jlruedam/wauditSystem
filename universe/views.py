@@ -5,4 +5,7 @@ from django.shortcuts import render
 def prueba(request):
     return render(request, "./universe/prueba.html")
 
+def universeAudit(request):
+    return render(request, "./universe/universeAudit.html")
+
 

@@ -1,0 +1,128 @@
+
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "barraUniversoAudit.html" %}
+
+    
+    <script>
+        function ShowSelected()
+        {
+        /* Para obtener el valor */
+        var cod = document.getElementById("procesoUniverso").value;
+
+        document.getElementById("anotaMacroproceso").innerHTML = cod;
+        /* Para obtener el texto */
+       // var combo = document.getElementById("procesoUniverso");
+        //var selected = combo.options[combo.selectedIndex].text;
+        }
+        function funcionCargarProcesos(){
+            //document.getElementById("FormNuevaAuditoriaUniverso").action = "/CargarAuditoriaUniverso/";
+            //var x=document.getElementById("procesoUniverso").value; 
+            //document.getElementById("selectProceso").value = x
+
+            //document.getElementById("anotaMacroproceso").innerHTML = cod;       
+
+        }
+        function funcionGuardarAuditoriaUniverso(){
+             document.getElementById("FormNuevaAuditoriaUniverso").action = "/GuardarAuditoriaUniverso/";
+
+        }
+
+        
+    </script>
+    <div id="contenidoFormularioAuditoriaUniverso">  
+        <form method="GET" action="/CargarAuditoriaUniverso/" id="FormNuevaAuditoriaUniverso">
+
+            <table id="tablaFormaularioAuditoriaUniverso">
+            <tr>
+                <td>
+                    <label for="procesoUniverso2">Proceso</Label>
+                </td>
+                <td> 
+                    <select name="procesoUniverso2" id="procesoUniverso2">
+                    {%for p in dataProceso%}
+                        <option value={{p.proceso}}>{{p.proceso}}</option>
+                    {% endfor %}
+                    </select>
+                    <p>Proceso selecionado:</p>
+                    <select name="selectProceso" id="selectProceso">
+                    {%for p in dataProcesoFiltrada%}
+                        <option value={{p.proceso}}>{{p.proceso}}</option>
+                    {% endfor %} 
+                    </select>
+                    <input type="submit" value="Cargar" id="CargarProcesosAuditoriaUniverso"/> 
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <label for="selectmacroproceso" >Macroproceso:</Label>
+                </td>
+                <td> 
+                    <select name="selectmacroproceso" id="selectmacroproceso">
+                    {%for p in dataProcesoFiltrada%}
+                        <option value={{p.macroproceso}}>{{p.macroproceso}}</option>
+                    {% endfor %}  
+                    </select>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <label for="selectresponsable" >Gestión responsable:</Label>
+                </td>
+                <td> 
+                    <select name="selectresponsable" id="selectresponsable">
+                    {%for p in dataProcesoFiltrada%}
+                        <option value={{p.responsable}}>{{p.responsable}}</option>
+                    {% endfor %}  
+                    <select>
+                </td>
+                
+            </tr>
+            <tr>
+                <td><label for="CodigoAuditoriaUniverso">CÓDIGO AUDITORÍA:</Label></td>
+                <td><input type="text" name="CodigoAuditoriaUniverso" id="CodigoAuditoriaUniverso"/></td><!--A la base de datos-->
+            </tr>
+            <tr>
+                <td><label for="AuditoriaGeneralUniverso">AUDITORÍA GENERAL:</Label></td>
+                <td><input type="text" name="AuditoriaGeneralUniverso" id="AuditoriaGeneralUniverso"/></td><!--A la base de datos-->
+            </tr>
+            <tr>
+                <td><label for="NombreAuditoriaUniverso">NOMBRE AUDITORÍA:</Label></td>
+                <td><input type="text" name="NombreAuditoriaUniverso" id="NombreAuditoriaUniverso"/></td><!--A la base de datos-->
+                
+
+            </tr>
+            <tr>
+               <td><label for="ActividadAuditoriaUniverso">ACTIVIDADES AUDITORIA:</Label></td>
+               <td><input type="text" name="ActividadAuditoriaUniverso" id="ActividadAuditoriaUniverso"/></td><!--A la base de datos-->
+           
+            </tr>
+            <tr>
+                <td><label for="RiesgosAuditoriaUniverso">RIESGOS DEL PROCESO</Label></td>
+                <td>
+                    <textarea name="RiesgosAuditoriaUniverso" cols="50" rows="5" id="RiesgosAuditoriaUniverso"></textarea><!--A la base de datos-->
+                </td>
+
+            </tr>
+            
+            <tr>
+                <td colspan="6"><input type="submit" value="Guardar" id="botonGuardarAuditU"onclick="funcionGuardarAuditoriaUniverso()" /></td>
+            </tr>
+
+
+            <!--Se podría pasar una lista con enlaces que pasen paramentros a una vista para cargar la lista
+            correspondiente a cada una de las opciones de gestión-->
+            {{mensaje}}
+            </table>
+        </form>
+    </div>
+    <br/>
+    
+{% endblock %}

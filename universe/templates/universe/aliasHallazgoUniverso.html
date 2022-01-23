@@ -1,0 +1,119 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "barraUniversoAudit.html" %}
+
+    <script>
+        function GuardarAliasUniverso() {
+
+            document.getElementById("FormNuevoAliasU").action="/guardarAliasU/"
+        }
+    </script>
+
+
+
+
+    <form method="GET" action="/cargarAuditoriaUxCodigo/" id="FormNuevoAliasU">
+        
+            <table id="tablaFormaularioAliasHallazgo">
+                <tr>
+                    <td>
+                        <label for=selectCodigo>Seleccionar código:</label>
+                    </td>
+                    <td>
+                        <select name="selectCodigo" id="selectCodigo">
+                        {%for a in dataAuditoriaUniverso%}
+                            <option value={{a.codigo}}>{{a.codigo}}</option>
+                        {% endfor %} 
+                        </select>  
+                        <input type="submit" value="Cargar"></input> 
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <label>Código</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.codigo}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Gestión responsable:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.responsableProceso}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Proceso:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.proceso}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Macroproceso:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.macroproceso}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Auditoría General:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.auditoriaGeneral}}</p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Nombre Auditoría:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.nombreAuditoria}}</p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Actividad:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.actividadAuditoria}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Riesgos:</label>
+                    </td>
+                    <td>
+                        <p>{{dataAuditoriaUFiltrada.riesgosAuditoria}}</p>                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Alias hallazgo:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="aliasHallazgoU" id="aliasHallazgoU"/>
+                    </td>
+                </tr>
+                <tr>
+                   <td colspan="2"><input type="submit" value="Guardar" id="botonGuardarAliasU" onclick="GuardarAliasUniverso()" /></td>
+                </tr>
+                
+           
+            </table>
+        </form>
+
+    
+    
+    
+{% endblock %}
