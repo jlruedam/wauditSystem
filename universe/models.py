@@ -1,8 +1,6 @@
 from django.db import models
 from django.forms import CharField, EmailField, ImageField, IntegerField
 
-
-
 class UniverseManageResponsable(models.Model):
     codeManage=models.CharField(max_length=5,unique=True)
     responsable=models.CharField(max_length=100)

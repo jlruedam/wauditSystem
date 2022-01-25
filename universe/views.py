@@ -4,22 +4,43 @@ from universe.models import *
 
 # Create your views here.
 def processUniverse(request):
-    try:
-        action=request.POST['action']
-        responsable=request.POST['manageResponsableMacro'] 
-        cod=request.POST['codeManage'] 
-        print("el valor de action es:"+ action)
-        context={"responsable":responsable,"action": action, "code":cod}
+    dataManageResponsable=UniverseManageResponsable.objects.all()
+    # Llamar data de la gestión responsable para actualizar listado en l formulario de macroproceso
+    # Por esta misma razón se de dentro del contexto de esta vista
 
+    # Se captura excepción para utilizar el caso inicial cuando la vista se llama desde el botón sin enviar parámetros 
+    # a través del POST; es cuando action y manageResponsable no se envian a través del POST.
+    try:
+    
+        action=request.POST['action']
+        responsable=request.POST['manageResponsable'] 
+        cod=request.POST['codeManage'] 
+        
+        context={
+            "responsable":responsable,
+            "action": action, "code":cod,
+            "dataManageResponsable":dataManageResponsable
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
         if action=="guardar":
+
             newProcess=UniverseManageResponsable(codeManage=cod,responsable=responsable)
             newProcess.save()
             return render(request, "./universe/processUniverse.html",context )
+
         else:
             return render(request, "./universe/processUniverse.html", context)
+
     except Exception as e:
+
         print("WATAGATAPITUSBERRY!")
-        return render(request, "./universe/processUniverse.html")
+        dataManageResponsable=UniverseManageResponsable.objects.all()
+
+        context={
+            "dataManageResponsable":dataManageResponsable
+        }
+        return render(request, "./universe/processUniverse.html",context)
 
 
 

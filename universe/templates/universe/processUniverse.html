@@ -11,26 +11,25 @@
 
 
 <!--Formulario Agregar gestión responsable-->
-
 <br><br>
 <fieldset class="fieldset"> 
     <legend class="fieldset__legend">Agregar gestión responsable:</legend>
 
-    <form class="form" method="post" action="/processUniverse/">
+    <form class="form" method="post" action="/processUniverse/" id="formProcessUniverse">
         {% csrf_token %}
         <input type="text" name="action" value="guardar" style="display: none;"/>
 
         <label class="form__label" for="codeManage">
             <span>Código gestión:</span> 
-            <input type="text" name="codeManage"/>
+            <input class="form__input" type="text" name="codeManage"/>
         </Label>
 
-        <label class="form__label" for="manageResponsableMacro">
+        <label class="form__label" for="manageResponsable">
             <span>Nueva gestión:</span> 
-            <input type="text" name="manageResponsableMacro"/>
+            <input class="form__text" type="text" name="manageResponsable"/>
         </Label>
         
-        <input type="submit" value="Guardar" id="saveManageResponsable"/>
+        <input class="form__submit" type="submit" value="Guardar" id="saveManageResponsable"/>
         <p>Proceso guardado:{{code}}-{{responsable}}</p>
         
     </form>
@@ -38,6 +37,32 @@
 </fieldset>
 
 
+<br><br>
+
+<!--Formulario Agregar Macroproceso-->
+ 
+<fieldset class="fieldset">
+    <legend class="fieldset__legend">Agregar macroproceso:</legend>
+    <form class="form" method="post" action="" id="formMacroprocessUniverse">
+        
+        <label class="form__label" for="manageResponsableMacro">
+            <span>Gestión responsable:</span>
+            <select class="form__select" name="manageResponsableMacro" id="manageResponsableMacro">
+            {% for responsable in dataManageResponsable %}
+                <option>{{responsable}}</option>
+            {% endfor %}
+            </select>
+        </Label>
+        
+        <label class="form__label" for="macroprocessUniverse"><br>
+            <span>Macroproceso:</span>
+            <input class="form__text" type="text" name="macroprocessUniverse" id="macroprocessUniverse"/> 
+        </Label>
+        
+        <input class="form__submit" type="submit" value="Guardar" id="saveMacroprocess"/>
+    
+    </form>
+</fieldset> 
 
 <!--Formulario Agregar Proceso-->
     <!-- <fieldset class="fieldset">
@@ -54,7 +79,7 @@
                 </select>
             </Label>
 
-            <label for="macroprocessUniverse">
+            <label class="form__label" for="macroprocessUniverse">
                 <span>Macroprocesos de la Gestión responsable:</span> 
                 <select name="macroprocessUniverse" id="macroprocessUniverse">
                     <option>opciones</option>
@@ -62,33 +87,17 @@
             </label>
         
 
-            <label for="processUniverse">
+            <label class="form__label" for="processUniverse">
                 <span>Procesos a cargar:</span>
                 <input type="text" name="processUniverse" id="processUniverse"/>
             </Label>
-            <input type="submit" value="Guardar" id="saveManageResponsable"/>
+            <input class="form__btn" type="submit" value="Guardar" id="saveManageResponsable"/>
         </form>
     </fieldset>
-     -->
-   
     
+   
+     -->
 
-    <!--Formulario Agregar Macroproceso-->
-    <!-- <form method="GET" action="/GuardarMacroprocesosAuditar/">
-    <fieldset>
-        <legend><h3>Agregar macroproceso:</h3></legend>
-            <label for="gestionResponsable">Gestión responsable:</Label>
-            <select name="gestionResponsable" id="gestionResponsable">
-               
-                <option>opciones</option>
-            
-            </select>
-            <label for="macroprocesosUniverso">Macroproceso:</Label>
-            <input type="text" name="macroprocesosUniverso" id="macroprocesosUniverso"/>
-            <input type="submit" value="Guardar" id="botonGuardarMacroprocesosUniverso"/>
-    </fieldset> 
-    <br/>
-    </form> -->
 
 
 
@@ -100,7 +109,7 @@
 
     
     
-    <!-- <script src="{% static './universe/scripts/prueba.js'%}"></script> -->
+    <script src="{% static './universe/scripts/prueba.js'%}"></script>
 {% endblock %}
 
 

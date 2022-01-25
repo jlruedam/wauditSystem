@@ -1,7 +1,14 @@
-selectProcess=document.getElementById("manageResponsable");
+selectProcess=document.getElementById("manageResponsableMacro");
+submitMacro=document.getElementById("saveMacroprocess");
+
 
 
 selectProcess.addEventListener(
-    "change",()=>{
+    "focus",()=>{
     console.log("sin funciona");
+    
+
 });
+
+
+
