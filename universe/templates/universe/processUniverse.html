@@ -15,7 +15,7 @@
 <fieldset class="fieldset"> 
     <legend class="fieldset__legend">Agregar gestión responsable:</legend>
 
-    <form class="form" method="post" action="/processUniverse/" id="formProcessUniverse">
+    <form class="form" method="post" action="/manageResponsableUniverse/" id="formManageResponsableUniverse">
         {% csrf_token %}
         <input type="text" name="action" value="guardar" style="display: none;"/>
 
@@ -67,39 +67,50 @@
     </form>
 </fieldset> 
 
+
+<br><br>
 <!--Formulario Agregar Proceso-->
-    <!-- <fieldset class="fieldset">
+    <fieldset class="fieldset">
         <legend class="fieldset__legend">Agregar proceso:</legend>
 
-        <form class="form" action="">
+        <form class="form" method="post" action="/processUniverse/" id="formProcessUniverse">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;"/>
 
-            <label class="form__label" for="manageResponsable">
+            <label class="form__label" for="manageResponsableProcess">
                 <span>Gestión responsable:</span>
-                <select class="form__select" name="manageResponsable" id="manageResponsable">
-                    <option>opciones 1</option>
-                    <option>opciones 2</option>
-                    <option>opciones 3</option>
+                <select class="form__select" name="manageResponsableProcess" id="manageResponsableProcess">
+                {% for responsable in dataManageResponsable %}
+                    <option value={{responsable.responsable}}>{{responsable.responsable}}</option>
+                {% endfor %}    
                 </select>
             </Label>
 
             <label class="form__label" for="macroprocessUniverse">
                 <span>Macroprocesos de la Gestión responsable:</span> 
                 <select name="macroprocessUniverse" id="macroprocessUniverse">
-                    <option>opciones</option>
+                {% for macro in dataMacroProcess%}
+                    <option value={{macro.macroprocess}}>{{macro.macroprocess}}</option>
+                {% endfor %} 
                 </select>
             </label>
-        
 
+            <label class="form__label" for="numberProcessUniverse">
+                <span>Número de proceso a cargar:</span>
+                <input type="number" name="numberProcessUniverse" id="numberProcessUniverse"/>
+            </Label>
+        
             <label class="form__label" for="processUniverse">
-                <span>Procesos a cargar:</span>
+                <span>Proceso a cargar:</span>
                 <input type="text" name="processUniverse" id="processUniverse"/>
             </Label>
-            <input class="form__btn" type="submit" value="Guardar" id="saveManageResponsable"/>
+            <input class="form__btn" type="submit" value="Guardar" id="saveProcessUniverse"/>
+            <p>Proceso guardado:{{numProcess}}-{{process}}</p>
         </form>
     </fieldset>
     
    
-     -->
+    
 
 
 

@@ -3,8 +3,18 @@ from django.shortcuts import render
 from universe.models import *
 
 # Create your views here.
-def processUniverse(request):
+def moduleProcessUniverse(request):
     dataManageResponsable=UniverseManageResponsable.objects.all()
+    dataMacroProcess=UniverseMacroproces.objects.all()
+    context={
+        "dataManageResponsable":dataManageResponsable,
+        "dataMacroProcess":dataMacroProcess,
+    }
+    return render(request, "./universe/processUniverse.html", context)
+
+def manageResponsableUniverse(request):
+    dataManageResponsable=UniverseManageResponsable.objects.all()
+    dataMacroProcess=UniverseMacroproces.objects.all()
     # Llamar data de la gestión responsable para actualizar listado en l formulario de macroproceso
     # Por esta misma razón se de dentro del contexto de esta vista
 
@@ -16,12 +26,13 @@ def processUniverse(request):
         responsable=request.POST['manageResponsable'] 
         cod=request.POST['codeManage'] 
         responsable=responsable.replace(" ","_")
-        
+
         context={
             "responsable":responsable,
             "action": action, 
             "code":cod,
-            "dataManageResponsable":dataManageResponsable
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
         }
         # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
         # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
@@ -37,13 +48,14 @@ def processUniverse(request):
     except Exception as e:
 
         context={
-            "dataManageResponsable":dataManageResponsable
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
         }
         return render(request, "./universe/processUniverse.html",context)
 
-
 def macroProcessUniverse(request):
     dataManageResponsable=UniverseManageResponsable.objects.all()
+    dataMacroProcess=UniverseMacroproces.objects.all()
 
     try:
         action=request.POST['action']
@@ -55,7 +67,8 @@ def macroProcessUniverse(request):
             "action": action, 
             "responsable":responsable,
             "macroProcess":macroProcess,
-            "dataManageResponsable":dataManageResponsable
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
             
         }
         # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
@@ -68,17 +81,63 @@ def macroProcessUniverse(request):
 
         else:
             context={
-            "dataManageResponsable":dataManageResponsable
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
             }
             return render(request, "./universe/processUniverse.html", context)
 
     except:
-        print("WATAGATAPITUSBERRY")
+        
         context={
-            "dataManageResponsable":dataManageResponsable
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
         }
         return render(request, "./universe/processUniverse.html",context)
 
+def processUniverse(request):
+    dataManageResponsable=UniverseManageResponsable.objects.all()
+    dataMacroProcess=UniverseMacroproces.objects.all()
+
+    try:
+        action=request.POST['action']
+        responsable=request.POST['manageResponsableProcess'] 
+        macroProcess=request.POST['macroprocessUniverse']
+        numProcess=request.POST['numberProcessUniverse']
+        process=request.POST['processUniverse']
+        process=process.replace(" ","_")
+
+        context={
+            "action": action, 
+            "responsable":responsable,
+            "macroProcess":macroProcess,
+            "numProcess":numProcess,
+            "process":process,
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
+        if action=="guardar":
+
+            newProcess=UniverseProces(process=process, numProcess=numProcess, macroprocess=macroProcess, responsable=responsable)
+            newProcess.save()
+            return render(request, "./universe/processUniverse.html",context )
+
+        else:
+            context={
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
+            }
+            return render(request, "./universe/processUniverse.html", context)
+
+    except:
+        print("WATAGAPITUSBERRY")
+        context={
+            "dataManageResponsable":dataManageResponsable,
+            "dataMacroProcess":dataMacroProcess
+        }
+        return render(request, "./universe/processUniverse.html",context)
+    
 
 
 def prueba(request):
