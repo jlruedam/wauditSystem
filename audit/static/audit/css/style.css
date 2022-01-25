@@ -131,6 +131,10 @@ html{
     width: 8rem;
 }
 
+.form{
+    border: 1px red solid;
+}
+
 
 .footer{
     border-top: 1px solid var(--mainYellow);

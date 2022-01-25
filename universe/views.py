@@ -1,8 +1,30 @@
 import email
 from django.shortcuts import render
-from universe.models import Persona
+from universe.models import *
 
 # Create your views here.
+def processUniverse(request):
+    try:
+        action=request.POST['action']
+        responsable=request.POST['manageResponsableMacro'] 
+        cod=request.POST['codeManage'] 
+        print("el valor de action es:"+ action)
+        context={"responsable":responsable,"action": action, "code":cod}
+
+        if action=="guardar":
+            newProcess=UniverseManageResponsable(codeManage=cod,responsable=responsable)
+            newProcess.save()
+            return render(request, "./universe/processUniverse.html",context )
+        else:
+            return render(request, "./universe/processUniverse.html", context)
+    except Exception as e:
+        print("WATAGATAPITUSBERRY!")
+        return render(request, "./universe/processUniverse.html")
+
+
+
+
+
 
 def prueba(request):
     dataPersonas=Persona.objects.all()
@@ -29,5 +51,6 @@ def cargarPersona(request):
 
 def universeAudit(request):
     return render(request, "./universe/universeAudit.html")
+
 
 
