@@ -2,21 +2,21 @@ from django.db import models
 from django.forms import CharField, EmailField, ImageField, IntegerField
 
 class UniverseManageResponsable(models.Model):
-    codeManage=models.CharField(max_length=5,unique=True)
+    codeManage=models.CharField(max_length=5,unique=True,blank=True, null=True)
     responsable=models.CharField(max_length=100)
 
     def __str__(self):
         return (f"{self.codeManage}-{self.responsable}")
     
 class UniverseMacroproces(models.Model):
-    numMacro=models.CharField(max_length=5,unique=True)
     macroprocess=models.CharField(max_length=100)
     responsable=models.CharField(max_length=100)
     def __str__(self):
-        return (f"{self.numMacro}-{self.macroprocess}-{self.responsable}")
+        return (f"{self.macroprocess}-{self.responsable}")
      
     
 class UniverseProces(models.Model): 
+    numProcess=models.CharField(max_length=5,unique=True, blank=True, null=True)
     process=models.CharField(max_length=100)
     responsable=models.CharField(max_length=100)
     macroprocess=models.CharField(max_length=100)

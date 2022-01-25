@@ -26,7 +26,7 @@
 
         <label class="form__label" for="manageResponsable">
             <span>Nueva gestión:</span> 
-            <input class="form__text" type="text" name="manageResponsable"/>
+            <input class="form__input" type="text" name="manageResponsable"/>
         </Label>
         
         <input class="form__submit" type="submit" value="Guardar" id="saveManageResponsable"/>
@@ -43,24 +43,27 @@
  
 <fieldset class="fieldset">
     <legend class="fieldset__legend">Agregar macroproceso:</legend>
-    <form class="form" method="post" action="" id="formMacroprocessUniverse">
-        
+
+    <form class="form" method="post" action="/macroProcessUniverse/" id="formMacroprocessUniverse">
+        {% csrf_token %}
+        <input type="text" name="action" value="guardar" style="display: none;"/>
+
         <label class="form__label" for="manageResponsableMacro">
             <span>Gestión responsable:</span>
             <select class="form__select" name="manageResponsableMacro" id="manageResponsableMacro">
-            {% for responsable in dataManageResponsable %}
-                <option>{{responsable}}</option>
+            {% for responsable in dataManageResponsable%}
+                <option value={{responsable.responsable}}>{{responsable.responsable}}</option>
             {% endfor %}
             </select>
         </Label>
-        
-        <label class="form__label" for="macroprocessUniverse"><br>
+
+        <label class="form__label" for="macroprocessUniverse">
             <span>Macroproceso:</span>
             <input class="form__text" type="text" name="macroprocessUniverse" id="macroprocessUniverse"/> 
         </Label>
         
         <input class="form__submit" type="submit" value="Guardar" id="saveMacroprocess"/>
-    
+        <p>Macroproceso guardado:{{macroProcess}}</p>
     </form>
 </fieldset> 
 

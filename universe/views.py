@@ -15,10 +15,12 @@ def processUniverse(request):
         action=request.POST['action']
         responsable=request.POST['manageResponsable'] 
         cod=request.POST['codeManage'] 
+        responsable=responsable.replace(" ","_")
         
         context={
             "responsable":responsable,
-            "action": action, "code":cod,
+            "action": action, 
+            "code":cod,
             "dataManageResponsable":dataManageResponsable
         }
         # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
@@ -34,16 +36,48 @@ def processUniverse(request):
 
     except Exception as e:
 
-        print("WATAGATAPITUSBERRY!")
-        dataManageResponsable=UniverseManageResponsable.objects.all()
-
         context={
             "dataManageResponsable":dataManageResponsable
         }
         return render(request, "./universe/processUniverse.html",context)
 
 
+def macroProcessUniverse(request):
+    dataManageResponsable=UniverseManageResponsable.objects.all()
 
+    try:
+        action=request.POST['action']
+        responsable=request.POST['manageResponsableMacro'] 
+        macroProcess=request.POST['macroprocessUniverse']
+        macroProcess=macroProcess.replace(" ","_")
+
+        context={
+            "action": action, 
+            "responsable":responsable,
+            "macroProcess":macroProcess,
+            "dataManageResponsable":dataManageResponsable
+            
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
+        if action=="guardar":
+
+            newMacroProcess=UniverseMacroproces(macroprocess=macroProcess,responsable=responsable)
+            newMacroProcess.save()
+            return render(request, "./universe/processUniverse.html",context )
+
+        else:
+            context={
+            "dataManageResponsable":dataManageResponsable
+            }
+            return render(request, "./universe/processUniverse.html", context)
+
+    except:
+        print("WATAGATAPITUSBERRY")
+        context={
+            "dataManageResponsable":dataManageResponsable
+        }
+        return render(request, "./universe/processUniverse.html",context)
 
 
 
