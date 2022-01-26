@@ -45,17 +45,17 @@ html{
 .aside__title{
     text-align: center;
     color:var(--mainBlue);
-    border-bottom: 1px solid var(--mainYellow);   
+    border-bottom: 1px solid var(--mainYellow);
     letter-spacing: 2rem;
-    font-size: 2rem; 
+    font-size: 2rem;
     box-sizing: border-box;
     margin: 30px auto;
 }
 .nav{
     /* border: 1px solid yellow; */
     width: 100%;
-    box-sizing: border-box; 
-    
+    box-sizing: border-box;
+
 }
 
 .nav-list {
@@ -72,14 +72,13 @@ html{
 }
 
 .btn {
-    
+
     border-radius: 10px;
     background-color:var(--mainBlue);
-    
     text-align: center;
     font-family: helvetica, arial;
-    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0); 
-    font-size: 1rem;  
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+    font-size: 1rem;
 }
 
 .btn:hover {
@@ -104,7 +103,7 @@ html{
     text-decoration: none;
     text-align: center;
     margin: 0;
-    padding: 0; 
+    padding: 0;
     color:var(--fontMainColor);
 }
 
@@ -118,17 +117,93 @@ html{
     font-size: 1.6rem;
     color: var(--mainBlue);
     border-top:2px dotted var(--mainYellow);
-    margin-top: 30px;
+    margin-top: 30px auto;
     min-height: 40vh;
-
 }
+
 
 .panel-section__title{
     margin: 30px auto;
 }
 
+.submodule{
+    padding: 0;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.fieldset{
+    margin-top: 10px;
+}
+
+.form{
+    width: 90vw;
+    margin: 10px auto;
+}
+
+.form .form__select{
+    width: 95%;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form .form__text{
+    width: 95%;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form .form__textarea{
+    width: 99%;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.form .form__submit{
+    width: 10rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    background-color: var(--mainYellow);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+}
+
+.form .form__submit:hover{
+    background-color: var(--fontMainColor);
+}
+
+.form .form__submit:active{
+    background-color: aqua;
+}
+
+/* .form .form__text{
+    box-sizing: border-box;
+    width: 5rem;
+} */
+
+/* .fieldset{
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+} */
+
+
+
+
 .panel-section .btn{
     width: 8rem;
+    max-width: 95vw;
 }
 
 /* .form{
@@ -150,29 +225,29 @@ html{
 }
 
 #menuPrincipal{
-   
+
     width: 30%;
     height: 100%;
     margin: 5px;
     display: block;
-    
-}  
+
+}
 
 #menuPrincipal p{
 
-    align-items: center;   
+    align-items: center;
 }
 
 #menuPrincipal h1{
 
     text-align: center;
     color: #00356f;
-    border-bottom: 1px solid #fcbf00;   
+    border-bottom: 1px solid #fcbf00;
 }
 
 
 #menuPrincipal a {
-    
+
     padding: 15px 10px;
     border-radius: 10px;
     background-color:#00356f;
@@ -181,7 +256,7 @@ html{
     text-decoration: none;
     text-align: center;
     font-family: helvetica, arial;
-    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);     
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
 }
 
 
@@ -204,11 +279,11 @@ html{
 } */
 
 /* #panelCambiante{
-    
+
     width: 75%;
     height: 100%;
     margin: 25px;
-    padding:15px;  
+    padding:15px;
 }
 
 
@@ -226,7 +301,7 @@ html{
     justify-content: space-around;
     display: flex;
     align-content: flex-end;
-    
+
 }
 
 
@@ -236,13 +311,13 @@ html{
     border-collapse: collapse;
     text-align: center;
     text-transform: uppercase;
-   
+
 }
 
 #contenidoFormularioAuditoriaUniverso table{
-    
+
     box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
-    
+
 }
 
  */
@@ -273,8 +348,8 @@ html{
     font-family: helvetica, arial;
     box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
     width: 250px;
-    
-     
+
+
 }
 
 #panelCambiante #crearA a:hover {
@@ -293,15 +368,15 @@ html{
     text-align: center;
     display:flow-root;
     min-width: -webkit-fill-available;
-    
+
 }
 #panelCambiante #TablaCrearAudit2 #botonG{
     border-radius: 10px solid #fcbf00;
     padding-top: 10px;
     padding-bottom: 10px;
-    
+
 }
-    
+
 
 
 

@@ -8,5 +8,6 @@ urlpatterns = [
     path('processUniverse/',views.processUniverse, name='processUniverse'),
     path('manageResponsableUniverse/',views.manageResponsableUniverse, name='manageResponsableUniverse'),
     path('macroProcessUniverse/',views.macroProcessUniverse, name='macroProcessUniverse'),
+    path('moduleAuditUniverse/',views.moduleAuditUniverse, name='moduleAuditUniverse'),
     path('cargarPersona/',views.cargarPersona, name='cargarPersona')
 ]
