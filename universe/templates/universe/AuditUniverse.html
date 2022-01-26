@@ -17,14 +17,16 @@
             {% csrf_token %}
             <input type="text" name="action" value="guardar" style="display: none;"/>
 
-            <label class="form__label" for="procesoUniverso2">
+            <label class="form__label" for="processUniverse">
                 Proceso:
-                <select class="form__select" name="procesoUniverso2" id="procesoUniverso2">
-                    <option >option 1</option>
+                <select class="form__select" name="processUniverse" id="processUniverse">
+                {% for process in dataProcess %}
+                    <option value={{process.process}}>{{process.process}}</option>
+                {% endfor %}
                 </select>
             </Label>
 
-            
+            <p id="prueba"></p>
             <label class="form__label" for="selectmacroproceso" >
                 Macroproceso:
                 <select class="form__select" name="selectmacroproceso" id="selectmacroproceso">

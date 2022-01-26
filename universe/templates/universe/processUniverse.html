@@ -9,37 +9,50 @@
 
 
 <div class="submodule">
-    <!--Formulario Agregar gestión responsable-->
-    <br><br>
-    <fieldset class="fieldset"> 
-        <legend class="fieldset__legend">Agregar gestión responsable:</legend>
 
-        <form class="form" method="post" action="/manageResponsableUniverse/" id="formManageResponsableUniverse">
+    <!--Formulario Agregar Proceso-->
+    <fieldset class="fieldset">
+        <legend class="fieldset__legend">Agregar proceso:</legend>
+
+        <form class="form" method="post" action="/processUniverse/" id="formProcessUniverse">
             {% csrf_token %}
             <input type="text" name="action" value="guardar" style="display: none;"/>
 
-            <label class="form__label" for="codeManage">
-                <span>Código gestión:</span> 
-                <input class="form__text" type="text" name="codeManage"/>
+            <label class="form__label" for="manageResponsableProcess">
+                <span>Gestión responsable:</span>
+                <select class="form__select" name="manageResponsableProcess" id="manageResponsableProcess">
+                {% for responsable in dataManageResponsable %}
+                    <option value={{responsable.responsable}}>{{responsable.responsable}}</option>
+                {% endfor %}    
+                </select>
             </Label>
+            
+            <label class="form__label" for="macroprocessUniverse">
+                <span>Macroprocesos de la Gestión responsable:</span> 
+                <select class="form__select" name="macroprocessUniverse" id="macroprocessUniverse">
+                {% for macro in dataMacroProcess%}
+                    <option value={{macro.macroprocess}}>{{macro.macroprocess}}</option>
+                {% endfor %} 
+                </select>
+            </label>
 
-            <label class="form__label" for="manageResponsable">
-                <span>Nueva gestión:</span> 
-                <input class="form__text" type="text" name="manageResponsable"/>
+            <label class="form__label" for="numberProcessUniverse">
+                <span>Número de proceso a cargar:</span>
+                <input class="form__text" type="number" name="numberProcessUniverse" id="numberProcessUniverse"/>
             </Label>
-            
-            <input class="form__submit" type="submit" value="Guardar" id="saveManageResponsable"/>
-            <p>Proceso guardado:{{code}}-{{responsable}}</p>
-            
+        
+            <label class="form__label" for="processUniverse">
+                <span>Proceso a cargar:</span>
+                <input class="form__text"  type="text" name="processUniverse" id="processUniverse"/>
+            </Label>
+            <input class="form__submit" type="submit" value="Guardar" id="saveProcessUniverse"/>
+            <p>Proceso guardado:{{numProcess}}-{{process}}</p>
         </form>
-
     </fieldset>
 
 
-    <br><br>
-
     <!--Formulario Agregar Macroproceso-->
-    
+    <br><br>
     <fieldset class="fieldset">
         <legend class="fieldset__legend">Agregar macroproceso:</legend>
 
@@ -66,47 +79,33 @@
         </form>
     </fieldset> 
 
-
+    <!--Formulario Agregar gestión responsable-->
     <br><br>
-    <!--Formulario Agregar Proceso-->
-    <fieldset class="fieldset">
-        <legend class="fieldset__legend">Agregar proceso:</legend>
+    <fieldset class="fieldset"> 
+        <legend class="fieldset__legend">Agregar gestión responsable:</legend>
 
-        <form class="form" method="post" action="/processUniverse/" id="formProcessUniverse">
+        <form class="form" method="post" action="/manageResponsableUniverse/" id="formManageResponsableUniverse">
             {% csrf_token %}
             <input type="text" name="action" value="guardar" style="display: none;"/>
 
-            <label class="form__label" for="manageResponsableProcess">
-                <span>Gestión responsable:</span>
-                <select class="form__select" name="manageResponsableProcess" id="manageResponsableProcess">
-                {% for responsable in dataManageResponsable %}
-                    <option value={{responsable.responsable}}>{{responsable.responsable}}</option>
-                {% endfor %}    
-                </select>
+            <label class="form__label" for="codeManage">
+                <span>Código gestión:</span> 
+                <input class="form__text" type="text" name="codeManage"/>
             </Label>
 
-            <label class="form__label" for="macroprocessUniverse">
-                <span>Macroprocesos de la Gestión responsable:</span> 
-                <select class="form__select" name="macroprocessUniverse" id="macroprocessUniverse">
-                {% for macro in dataMacroProcess%}
-                    <option value={{macro.macroprocess}}>{{macro.macroprocess}}</option>
-                {% endfor %} 
-                </select>
-            </label>
-
-            <label class="form__label" for="numberProcessUniverse">
-                <span>Número de proceso a cargar:</span>
-                <input class="form__text" type="number" name="numberProcessUniverse" id="numberProcessUniverse"/>
+            <label class="form__label" for="manageResponsable">
+                <span>Nueva gestión:</span> 
+                <input class="form__text" type="text" name="manageResponsable"/>
             </Label>
-        
-            <label class="form__label" for="processUniverse">
-                <span>Proceso a cargar:</span>
-                <input class="form__text"  type="text" name="processUniverse" id="processUniverse"/>
-            </Label>
-            <input class="form__submit" type="submit" value="Guardar" id="saveProcessUniverse"/>
-            <p>Proceso guardado:{{numProcess}}-{{process}}</p>
+            
+            <input class="form__submit" type="submit" value="Guardar" id="saveManageResponsable"/>
+            <p>Proceso guardado:{{code}}-{{responsable}}</p>
+            
         </form>
+
     </fieldset>
+    <br><br>
+    
 </div>
 
 

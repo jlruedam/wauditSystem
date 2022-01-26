@@ -7,7 +7,6 @@ selectProcess.addEventListener(
     "focus",()=>{
     console.log("sin funciona");
     
-
 });
 
 

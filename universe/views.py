@@ -4,7 +4,15 @@ from universe.models import *
 
 # Create your views here.
 def moduleAuditUniverse(request):
-    return render(request, "./universe/auditUniverse.html")
+    dataManageResponsable=UniverseManageResponsable.objects.all()
+    dataMacroProcess=UniverseMacroproces.objects.all()
+    dataProcess=UniverseProces.objects.all()
+    context={
+        "dataManageResponsable":dataManageResponsable,
+        "dataMacroProcess":dataMacroProcess,
+        "dataProcess":dataProcess
+    }
+    return render(request, "./universe/auditUniverse.html",context)
 
 
 def moduleProcessUniverse(request):
