@@ -17,30 +17,29 @@
             {% csrf_token %}
             <input type="text" name="action" value="guardar" style="display: none;"/>
 
-            <label class="form__label" for="processUniverse">
-                Proceso:
-                <select class="form__select" name="processUniverse" id="processUniverse">
-                {% for process in dataProcess %}
-                    <option value={{process.process}}>{{process.process}}</option>
-                {% endfor %}
-                </select>
-            </Label>
-
-            <p id="prueba"></p>
-            <label class="form__label" for="selectmacroproceso" >
-                Macroproceso:
-                <select class="form__select" name="selectmacroproceso" id="selectmacroproceso">
-                    <option value="">Option 1</option>
-                </select>
-            </Label>
-
-            <label class="form__label" for="selectresponsable" >
+            <label class="form__label" for="selectResponsable" >
                 Gestión responsable:
-                <select class="form__select" name="selectresponsable" id="selectresponsable">
-                    <option value="">Option 1</option>
+                <select class="form__select" name="selectResponsable" id="selectResponsable">
+                    <option value="">...</option>
+                    {% for responsable in dataManageResponsable %}
+                    <option value={{responsable.responsable}}>{{responsable.responsable}}</option>
+                    {% endfor %}
                 <select>
             </Label>
 
+            <label class="form__label" for="selectMacroprocess" >
+                Macroproceso:
+                <select class="form__select" name="selectMacroprocess" id="selectMacroprocess">
+                    <option value="">...</option>
+                </select>
+            </Label>
+
+            <label class="form__label" for="selectProcess">
+                Proceso:
+                <select class="form__select" name="selectProcess" id="selectProcess">
+                    <option value="">...</option>
+                </select>
+            </Label>
 
             <label class="form__label" for="CodigoAuditoriaUniverso">
                 Código auditoría:
@@ -85,5 +84,7 @@
 
 </div>
 
+<script src="{% static 'universe/scripts/listQueries.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
 {% endblock %}
