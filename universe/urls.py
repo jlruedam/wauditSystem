@@ -9,5 +9,6 @@ urlpatterns = [
     path('manageResponsableUniverse/',views.manageResponsableUniverse, name='manageResponsableUniverse'),
     path('macroProcessUniverse/',views.macroProcessUniverse, name='macroProcessUniverse'),
     path('moduleAuditUniverse/',views.moduleAuditUniverse, name='moduleAuditUniverse'),
-    path('cargarPersona/',views.cargarPersona, name='cargarPersona')
+    path('cargarPersona/',views.cargarPersona, name='cargarPersona'),
+    path('listProcessUniverse/', views.listProcessUniverse, name='listProcessUniverse'),
 ]

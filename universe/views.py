@@ -1,16 +1,59 @@
+from dataclasses import dataclass
 import email
+import http
+from multiprocessing.dummy import Process
 from django.shortcuts import render
 from universe.models import *
+from django.http import HttpResponse, JsonResponse
+
 
 # Create your views here.
+def listProcessUniverse(request):
+
+    # Se utiliza esta vista para los queries realizados de forma asíncrona para renderizar listas deplegables dependientes
+    # Se utiliza esta misma vista para solicitar diferentes vistas y se utiliza la petición GET para obtener los parametros de busquedas a través de la URL.
+    # Los parámetros recibidos son type indica que data voy a filtrar (responsable, proceso, macroproceso) 
+    # res-responsable a buscar, 
+
+    search=request.GET['buscar']
+    type_data=request.GET['type']
+    print("Buscar:" + search)
+    print("Tipo: "+type_data)
+
+    if type_data=='responsable':
+
+        macro=[]
+        dataMacroProcess=list(UniverseMacroproces.objects.all().filter(responsable=search).values())
+        
+        for data in dataMacroProcess:
+            macro.append(data['macroprocess'])
+            
+        print(macro)
+        return JsonResponse({"dataMacroProcess":macro})
+    
+    if type_data=='macroprocess':
+        process=[]
+        dataProcess=list(UniverseProces.objects.all().filter(macroprocess=search).values())
+
+        for data in dataProcess:
+            process.append(data['process'])
+
+        print(process)
+        return JsonResponse({"dataProcess":process}) 
+
+    # return render(request, "./universe/auditUniverse.html",context) 
+
+
+
+
 def moduleAuditUniverse(request):
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
     dataProcess=UniverseProces.objects.all()
     context={
         "dataManageResponsable":dataManageResponsable,
-        "dataMacroProcess":dataMacroProcess,
-        "dataProcess":dataProcess
+        # "dataMacroProcess":dataMacroProcess,
+        # "dataProcess":dataProcess
     }
     return render(request, "./universe/auditUniverse.html",context)
 
