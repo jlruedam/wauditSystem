@@ -161,7 +161,7 @@ html{
     display: flex;
     flex-direction: column;
     justify-content:space-between;
-    height: 35rem;
+    min-height: 35rem;
 }
 
 
