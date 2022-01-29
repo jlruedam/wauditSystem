@@ -33,6 +33,7 @@ html{
 .main{
     /* border: 2px solid black; */
     width: 100vw;
+    height: 100%;
     box-sizing: border-box;
     margin: 0;
     
@@ -57,7 +58,7 @@ html{
 }
 .nav{
     /* border: 1px solid yellow; */
-    width: 100%;
+
     box-sizing: border-box;
 
 }
@@ -69,6 +70,7 @@ html{
     align-items: center;
     margin: 0;
     padding: 0;
+    
     
 }
 
@@ -95,7 +97,7 @@ html{
 }
 
 .nav__btn {
-    width: 18rem;
+    min-width: 16rem;
     height: 5rem;
     display: flex;
     align-items: center;
@@ -112,9 +114,7 @@ html{
     color:var(--fontMainColor);
 }
 
-.line{
-    color: var(--mainYellow);
-}
+
 
 .panel-section{
     text-align: center;
@@ -122,8 +122,7 @@ html{
     font-size: 1.6rem;
     color: var(--mainBlue);
     border-top:2px dotted var(--mainYellow);
-    margin-top: 30px auto;
-    width: 95%;
+    width: 100%;
 
 }
 
@@ -132,12 +131,6 @@ html{
     margin: 30px auto;
 }
 
-.panel-section .btn{
-    width: 15rem;
-    /* max-width: 100vw; */
-    
-
-}
 
 .submodule{
     padding: 0;
@@ -151,6 +144,10 @@ html{
 .fieldset{
     margin: 10px;
     border-radius: 10px;
+    max-width: 30rem;
+    min-height: 40rem;
+    
+    
 }
 
 
@@ -160,24 +157,39 @@ html{
 }
 
 .form{
-    width: 90%;
-    margin: 10px auto;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    height: 35rem;
 }
 
 
 
 .form .form__select{
-    width: 95%;
+    width: 90%;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+    text-align: center;
+}
+
+
+
+.form span{
+    width: 90%;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 .form .form__text{
-    width: 95%;
+    width: 90%;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .form .form__textarea{
@@ -189,16 +201,16 @@ html{
 
 
 .form .form__submit{
-    width: 10rem;
+    width: 15rem;
     height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto;
+    margin: 20px auto;
     background-color: var(--mainYellow);
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+
+    
+    
 }
 
 .form .form__submit:hover{
