@@ -18,10 +18,10 @@
     margin-top: 5px;
 }
 
-/* .nav__btn {
-    min-width: 18rem
+.panel-section .nav__btn {
+    min-width: 11rem;
 
-} */
+}
 
 .panel-section{ 
     border-left:2px dotted var(--mainYellow); 
