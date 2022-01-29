@@ -1,0 +1,68 @@
+.header__title{
+    font-size: 3rem;
+    padding: 30px;
+    border-radius: 20px;
+
+}
+
+.main{
+    display: flex;
+    box-sizing: border-box;
+}
+
+.aside{
+    width: 25rem;
+    min-width: 25rem;
+    height: 70vh;
+    justify-content: start;
+    margin-top: 5px;
+}
+
+.panel-section{ 
+    border-left:2px dotted var(--mainYellow); 
+    border-top:0;  
+}
+
+
+
+
+.panel-section .btn{
+    width: 11rem;
+}
+
+
+/* 
+
+
+
+
+
+.submodule{
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+.fieldset{
+    margin: 10px auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    width: fit-content;
+    width: 20%;
+    box-sizing: border-box;
+    
+    
+}
+
+.form{
+    margin: 10px auto;
+    flex-direction: column;
+    justify-content:center;
+    width: fit-content;
+    
+    
+    
+}
+
+ */
