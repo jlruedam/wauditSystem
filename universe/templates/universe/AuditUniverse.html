@@ -22,7 +22,7 @@
                 <select class="form__select" name="selectResponsable" id="selectResponsable">
                     <option value="">...</option>
                     {% for responsable in dataManageResponsable %}
-                    <option value={{responsable.responsable}}>{{responsable.responsable}}</option>
+                    <option value="{{responsable.codeManage}}:{{responsable.responsable}}">{{responsable.codeManage}}:{{responsable.responsable}}</option>
                     {% endfor %}
                 <select>
             </Label>
@@ -41,9 +41,15 @@
                 </select>
             </Label>
 
-            <label class="form__label" for="CodigoAuditoriaUniverso">
+            <label class="form__label" for="numAuditUniverse">
+                Número de auditoría:
+                <input class="form__text" type="number" name="numAuditUniverse" id="numAuditUniverse"/>
+            </Label>
+            
+
+            <label class="form__label" for="codeAuditUniverse">
                 Código auditoría:
-                <input class="form__text" type="text" name="CodigoAuditoriaUniverso" id="CodigoAuditoriaUniverso"/>
+                <input class="form__text" type="text" name="codeAuditUniverse" id="codeAuditUniverse"/>
             </Label>
             
 

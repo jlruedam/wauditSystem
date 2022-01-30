@@ -34,16 +34,17 @@ def listProcessUniverse(request):
     if type_data=='macroprocess':
         process=[]
         dataProcess=list(UniverseProces.objects.all().filter(macroprocess=search).values())
-
+    
         for data in dataProcess:
-            process.append(data['process'])
+            print(data)
+            process.append(data['numProcess']+"/"+data['process'])
+            
 
         print(process)
         return JsonResponse({"dataProcess":process}) 
 
+    
     # return render(request, "./universe/auditUniverse.html",context) 
-
-
 
 
 def moduleAuditUniverse(request):
