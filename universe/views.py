@@ -7,13 +7,16 @@ from universe.models import *
 from django.http import HttpResponse, JsonResponse
 
 
-# Create your views here.
+
+#*********Queries
 def listProcessUniverse(request):
+
+    
 
     # Se utiliza esta vista para los queries realizados de forma asíncrona para renderizar listas deplegables dependientes
     # Se utiliza esta misma vista para solicitar diferentes vistas y se utiliza la petición GET para obtener los parametros de busquedas a través de la URL.
     # Los parámetros recibidos son type indica que data voy a filtrar (responsable, proceso, macroproceso) 
-    # res-responsable a buscar, 
+    
 
     search=request.GET['buscar']
     type_data=request.GET['type']
@@ -42,12 +45,14 @@ def listProcessUniverse(request):
 
         print(process)
         return JsonResponse({"dataProcess":process}) 
+#*********Modules
+def moduleUniverseAudit(request):
+    # Muestra el renderizado inicial del módulo Universo Auditable
+    return render(request, "./universe/moduleUniverseAudit.html")
+#*********Submodules
+def subModuleAuditUniverse(request): 
+    # Esta vista muestra el pantallazo inicial del sudmódulo la creación de la auditoría en el universo
 
-    
-    # return render(request, "./universe/auditUniverse.html",context) 
-
-
-def moduleAuditUniverse(request):
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
     dataProcess=UniverseProces.objects.all()
@@ -56,19 +61,24 @@ def moduleAuditUniverse(request):
         # "dataMacroProcess":dataMacroProcess,
         # "dataProcess":dataProcess
     }
-    return render(request, "./universe/auditUniverse.html",context)
+    return render(request, "./universe/subModuleAuditUniverse.html",context)
 
+def subModuleProcessUniverse(request):
+    # Esta vista muestra el renderizado inicial del submódulo "Proceso Universo"
 
-def moduleProcessUniverse(request):
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
     context={
         "dataManageResponsable":dataManageResponsable,
         "dataMacroProcess":dataMacroProcess,
     }
-    return render(request, "./universe/processUniverse.html", context)
+    return render(request, "./universe/subModuleProcessUniverse.html", context)
 
+#*********load to DataBase
 def manageResponsableUniverse(request):
+    # Esta vista permite interactuar con el submódulo "Proceso Universo", para guardar una Gestioón responsable
+    # en la base de datos, capturando los datos obtenidos desde el formulario.
+
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
     # Llamar data de la gestión responsable para actualizar listado en l formulario de macroproceso
@@ -96,10 +106,10 @@ def manageResponsableUniverse(request):
 
             newProcess=UniverseManageResponsable(codeManage=cod,responsable=responsable)
             newProcess.save()
-            return render(request, "./universe/processUniverse.html",context )
+            return render(request, "./universe/subModuleprocessUniverse.html",context )
 
         else:
-            return render(request, "./universe/processUniverse.html", context)
+            return render(request, "./universe/subModuleprocessUniverse.html", context)
 
     except Exception as e:
 
@@ -107,9 +117,11 @@ def manageResponsableUniverse(request):
             "dataManageResponsable":dataManageResponsable,
             "dataMacroProcess":dataMacroProcess
         }
-        return render(request, "./universe/processUniverse.html",context)
+        return render(request, "./universe/subModuleprocessUniverse.html",context)
 
 def macroProcessUniverse(request):
+    # Esta vista permite interactuar con el submódulo "Proceso Universo", para guardar un Macproceso
+    # en la base de datos, capturando los datos obtenidos desde el formulario.
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
 
@@ -133,14 +145,14 @@ def macroProcessUniverse(request):
 
             newMacroProcess=UniverseMacroproces(macroprocess=macroProcess,responsable=responsable)
             newMacroProcess.save()
-            return render(request, "./universe/processUniverse.html",context )
+            return render(request, "./universe/subModuleprocessUniverse.html",context )
 
         else:
             context={
             "dataManageResponsable":dataManageResponsable,
             "dataMacroProcess":dataMacroProcess
             }
-            return render(request, "./universe/processUniverse.html", context)
+            return render(request, "./universe/subModuleprocessUniversee.html", context)
 
     except:
         
@@ -148,9 +160,12 @@ def macroProcessUniverse(request):
             "dataManageResponsable":dataManageResponsable,
             "dataMacroProcess":dataMacroProcess
         }
-        return render(request, "./universe/processUniverse.html",context)
+        return render(request, "./universe/subModuleprocessUniverse.html",context)
 
 def processUniverse(request):
+    # Esta vista permite interactuar con el submódulo "Proceso Universo", para guardar un Proceso
+    # en la base de datos, capturando los datos obtenidos desde el formulario.
+
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
 
@@ -177,14 +192,14 @@ def processUniverse(request):
 
             newProcess=UniverseProces(process=process, numProcess=numProcess, macroprocess=macroProcess, responsable=responsable)
             newProcess.save()
-            return render(request, "./universe/processUniverse.html",context )
+            return render(request, "./universe/subModuleprocessUniverse.html",context )
 
         else:
             context={
             "dataManageResponsable":dataManageResponsable,
             "dataMacroProcess":dataMacroProcess
             }
-            return render(request, "./universe/processUniverse.html", context)
+            return render(request, "./universe/subModuleprocessUniverse.html", context)
 
     except:
         print("WATAGAPITUSBERRY")
@@ -192,9 +207,10 @@ def processUniverse(request):
             "dataManageResponsable":dataManageResponsable,
             "dataMacroProcess":dataMacroProcess
         }
-        return render(request, "./universe/processUniverse.html",context)
+        return render(request, "./universe/subModuleprocessUniverse.html",context)
     
 
+# Vistas de Prueba
 
 def prueba(request):
     dataPersonas=Persona.objects.all()
@@ -219,8 +235,7 @@ def cargarPersona(request):
     }
     return render(request, "./universe/prueba.html",context)
 
-def universeAudit(request):
-    return render(request, "./universe/universeAudit.html")
+
 
 
 
