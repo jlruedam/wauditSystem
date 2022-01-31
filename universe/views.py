@@ -49,7 +49,14 @@ def listProcessUniverse(request):
 #*********Modules
 def moduleUniverseAudit(request):
     # Muestra el renderizado inicial del módulo Universo Auditable
-    return render(request, "./universe/moduleUniverseAudit.html")
+    dataAuditUniverse=UniverseAudit.objects.all()
+    
+    context={
+        "dataAuditUniverse":dataAuditUniverse,
+        
+    }
+
+    return render(request, "./universe/moduleUniverseAudit.html",context)
 #*********Submodules
 def subModuleAuditUniverse(request): 
     # Esta vista muestra el pantallazo inicial del sudmódulo la creación de la auditoría en el universo
@@ -74,7 +81,18 @@ def subModuleProcessUniverse(request):
         "dataMacroProcess":dataMacroProcess,
     }
     return render(request, "./universe/subModuleProcessUniverse.html", context)
+    
 
+def subModuleAliasUniverse(request):
+    # Esta vista muestra el renderizado inicial del submódulo "Proceso Universo"
+
+    dataAuditUniverse=UniverseAudit.objects.all()
+    
+    context={
+        "dataAuditUniverse":dataAuditUniverse,
+        
+    }
+    return render(request, "./universe/subModuleAliasUniverse.html", context)
 #*********load to DataBase
 def auditUniverse(request):
     # Esta vista permite interactuar con el submódulo "Auditorías Universo", para guardar una auditoria

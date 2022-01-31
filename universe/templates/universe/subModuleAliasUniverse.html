@@ -1,0 +1,141 @@
+{% extends "audit/index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "universe/menuUniverseAudit.html" %}
+
+
+<div class="submodule">
+    <fieldset class="fieldset">
+        <legend class="fieldset__legend">Alias Universo</legend>
+        <form class="form" method="post" action="/aliasUniverse/" id="formAliasUniverse">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;"/>
+
+            <label class="form__label" for="selectCodeAudit" >
+                Gestión responsable:
+                <select class="form__select" name="selectCodeAudit" id="selectCodeAudit">
+                    <option value="">...</option>
+                    {% for audit in dataAuditUniverse %}
+                    <option value="{{audit.code}}">{{audit.code}}</option>
+                    {% endfor %}
+                <select>
+            </Label>
+
+
+            <input class="form__submit" type="submit" value="Guardar" id="botonGuardarAuditU" />
+
+            <p>Alias guardado:{{auditCreated}}</p>
+
+            
+
+        </form>
+
+    </fieldset>   
+
+
+
+</div>
+
+    <form method="GET" action="/cargarAuditoriaUxCodigo/" id="FormNuevoAliasU">
+        
+            <table id="tablaFormaularioAliasHallazgo">
+                <tr>
+                    <td>
+                        <label for=selectCodigo>Seleccionar código:</label>
+                    </td>
+                    <td>
+                        <select name="selectCodigo" id="selectCodigo">
+                            <option value={{a.codigo}}>opción 1</option>
+                        
+                        </select>  
+                        <input type="submit" value="Cargar"></input> 
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <label>Código</label>
+                    </td>
+                    <td>
+                        <p>washinango</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Gestión responsable:</label>
+                    </td>
+                    <td>
+                        <p>sambambele</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Proceso:</label>
+                    </td>
+                    <td>
+                        <p>sampalaroca</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Macroproceso:</label>
+                    </td>
+                    <td>
+                        <p>lamemleaquí</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Auditoría General:</label>
+                    </td>
+                    <td>
+                        <p>watagatapitusberry</p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Nombre Auditoría:</label>
+                    </td>
+                    <td>
+                        <p>huelteelpeo</p> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Actividad:</label>
+                    </td>
+                    <td>
+                        <p>sacateelmoco</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Riesgos:</label>
+                    </td>
+                    <td>
+                        <p>tira la piedra</p>                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Alias hallazgo:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="aliasHallazgoU" id="aliasHallazgoU"/>
+                    </td>
+                </tr>
+                <tr>
+                   <td colspan="2"><input type="submit" value="Guardar" id="botonGuardarAliasU"  /></td>
+                </tr>
+                
+           
+            </table>
+        </form>
+
+    
+    
+    
+{% endblock %}

@@ -11,6 +11,27 @@
         Modulo de Creación del Universo de Auditoría:<br/> 
     </p>
 
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Gestión responsable</th>
+            <th>Proceso</th>
+            <th>Actividad</th>
+        </tr>
+        
+        {% for audit in dataAuditUniverse %}
+        <tr>
+            <td>{{audit.code}}</td>
+            <td>{{audit.responsable}}</td>
+            <td>{{audit.audit}}</td>
+            <td>{{audit.activities}}</td>
+        </tr>
+        {% endfor %}
+    
+    </table>
+        
+        
+
     
 {% endblock %}
 

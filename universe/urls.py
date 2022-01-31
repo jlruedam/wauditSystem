@@ -9,6 +9,7 @@ urlpatterns = [
     #Submodules
     path('subModuleProcessUniverse/',views.subModuleProcessUniverse, name='subModuleProcessUniverse'),
     path('subModuleAuditUniverse/',views.subModuleAuditUniverse, name='subModuleAuditUniverse'),
+    path('subModuleAliasUniverse/',views.subModuleAliasUniverse, name='subModuleAliasUniverse'),
     #load to DataBase
     path('auditUniverse/',views.auditUniverse, name='auditUniverse'),
     path('processUniverse/',views.processUniverse, name='processUniverse'),
