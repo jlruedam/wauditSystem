@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import email
 import http
 from multiprocessing.dummy import Process
+from unicodedata import name
 from django.shortcuts import render
 from universe.models import *
 from django.http import HttpResponse, JsonResponse
@@ -75,6 +76,62 @@ def subModuleProcessUniverse(request):
     return render(request, "./universe/subModuleProcessUniverse.html", context)
 
 #*********load to DataBase
+def auditUniverse(request):
+    # Esta vista permite interactuar con el submódulo "Auditorías Universo", para guardar una auditoria
+    # en la base de datos, capturando los datos obtenidos desde el formulario.
+    dataManageResponsable=UniverseManageResponsable.objects.all()
+    # Se captura excepción para utilizar el caso inicial cuando la vista se llama desde el botón sin enviar parámetros 
+    # a través del POST; es cuando action y manageResponsable no se envian a través del POST.
+    try:
+    
+        action=request.POST['action']
+        responsable=request.POST['selectResponsable'] 
+        macroProcess=request.POST['selectMacroprocess']
+        process=request.POST['selectProcess']
+        numAudit=request.POST['numAuditUniverse']
+        code=request.POST['codeAuditUniverse'] 
+        generalAudit=request.POST['generalAuditUniverse'] 
+        nameAudit=request.POST['nameAuditUniverse']
+        activity=request.POST['activityAuditUniverse']
+        risk=request.POST['riskAuditUniverse']
+        
+
+        context={
+            
+            "dataManageResponsable":dataManageResponsable,
+            "auditCreated":code+"-"+nameAudit
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
+        if action=="guardar":
+
+            newAuditUniverse=UniverseAudit(
+                code=code,
+                numAudit=numAudit,
+                generalAudit=generalAudit,
+                audit=nameAudit,
+                activities=activity,
+                risk=risk,
+                responsable=responsable,
+                macroProcess=macroProcess,
+                process=process
+            )
+
+            newAuditUniverse.save()
+            return render(request, "./universe/subModuleAuditUniverse.html",context )
+
+        else:
+            return render(request, "./universe/subModuleAuditUniverse.html", context)
+
+    except Exception as e:
+
+        context={
+            "dataManageResponsable":dataManageResponsable,
+            
+        }
+        return render(request, "./universe/subModuleAuditUniverse.html",context)
+
+
 def manageResponsableUniverse(request):
     # Esta vista permite interactuar con el submódulo "Proceso Universo", para guardar una Gestioón responsable
     # en la base de datos, capturando los datos obtenidos desde el formulario.

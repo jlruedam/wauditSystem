@@ -13,7 +13,7 @@
   
     <fieldset class="fieldset">
         <legend class="fieldset__legend">Auditoría Universo</legend>
-        <form class="form" method="post" action="/moduleAuditUniverse/" id="formAuditUniverse">
+        <form class="form" method="post" action="/auditUniverse/" id="formAuditUniverse">
             {% csrf_token %}
             <input type="text" name="action" value="guardar" style="display: none;"/>
 
@@ -53,33 +53,33 @@
             </Label>
             
 
-            <label class="form__label" for="AuditoriaGeneralUniverso">
+            <label class="form__label" for="generalAuditUniverse">
                 Auditoría general:
-                <input class="form__text" type="text" name="AuditoriaGeneralUniverso" id="AuditoriaGeneralUniverso"/>
+                <input class="form__text" type="text" name="generalAuditUniverse" id="generalAuditUniverse"/>
             </Label>
             
 
-            <label class="form__label" for="NombreAuditoriaUniverso">
+            <label class="form__label" for="nameAuditUniverse">
                 Nombre auditoría:
-                <input class="form__text" type="text" name="NombreAuditoriaUniverso" id="NombreAuditoriaUniverso"/>
+                <input class="form__text" type="text" name="nameAuditUniverse" id="nameAuditUniverse"/>
             </Label>
             
 
-            <label class="form__label" for="ActividadAuditoriaUniverso">
+            <label class="form__label" for="activityAuditUniverse">
                 Actividades auditoría:
-                <input class="form__text" type="text" name="ActividadAuditoriaUniverso" id="ActividadAuditoriaUniverso"/>
+                <input class="form__text" type="text" name="activityAuditUniverse" id="activityAuditUniverse"/>
             </Label>
 
-            <label class="form__label" for="RiesgosAuditoriaUniverso">
+            <label class="form__label" for="riskAuditUniverse">
                 Riesgos del proceso:
-                <textarea class="form__textarea" name="RiesgosAuditoriaUniverso"  id="RiesgosAuditoriaUniverso"></textarea>
+                <textarea class="form__textarea" name="riskAuditUniverse"  id="riskAuditUniverse"></textarea>
             </Label>
 
             
 
             <input class="form__submit" type="submit" value="Guardar" id="botonGuardarAuditU" />
 
-
+            <p>Auditoría guardada:{{auditCreated}}</p>
 
             <!--Se podría pasar una lista con enlaces que pasen paramentros a una vista para cargar la lista
             correspondiente a cada una de las opciones de gestión-->
