@@ -11,35 +11,35 @@
 
 
     <fieldset class="fieldset-forms">
-        <legend class="fieldset-forms__legend">Alias Universo</legend>
-        <form class="forms" method="post" action="/aliasUniverse/" id="formAliasUniverse">
+        <legend class="fieldset-forms__legend">Causas Universo</legend>
+        <form class="forms" method="post" action="/causeUniverse/" id="formCauseUniverse">
             {% csrf_token %}
             <input type="text" name="action" value="guardar" style="display: none;" id="action"/>
            
-            <label class="forms__label" for="selectCodeAudit" >
-                Gestión responsable:
-                <select class="forms__select" name="selectCodeAudit" id="selectCodeAudit">
+            <label class="forms__label" for="selectAlias" >
+                Alias hallazgo:
+                <select class="forms__select" name="selectAlias" id="selectAlias">
                     <option value="">...</option>
-                    {% for audit in dataAuditUniverse %}
-                    <option value="{{audit.code}}">{{audit.code}}</option>
+                    {% for alias in dataAliasUniverse %}
+                    <option value="{{alias.alias}}">{{alias.alias}}</option>
                     {% endfor %}
                 <select>
             </Label>
                    
-            <label class="forms__label" for="aliasFinding">
-                Alías de hallazgo
-                <input class="forms__text" type="text" name="aliasFinding" id="aliasFinding"/>
+            <label class="forms__label" for="cause">
+                Causa estimada:
+                <input class="forms__text" type="text" name="cause" id="cause"/>
             </Label>
 
-            <label class="forms__label" for="aliasDescription">
-                Descripción
-                <textarea class="forms__textarea" name="aliasDescription"  id="aliasDescription"></textarea>
+            <label class="forms__label" for="causeDescription">
+                Descripción causa:
+                <textarea class="forms__textarea" name="causeDescription"  id="causeDescription"></textarea>
             </Label>
 
                   
-            <input class="forms__submit" type="submit" value="Guardar" id="saveAlias" />
+            <input class="forms__submit" type="submit" value="Guardar" id="saveCause" />
                    
-            <p>Alias guardado:</p>
+            <p>Causa guardada:</p>
         </form>
 
     </fieldset>   
