@@ -50,10 +50,15 @@ def listProcessUniverse(request):
 def moduleUniverseAudit(request):
     # Muestra el renderizado inicial del módulo Universo Auditable
     dataAuditUniverse=UniverseAudit.objects.all()
+    dataAliasUniverse=UniverseAlias.objects.all()
+    dataCauseUniverse=UniverseCause.objects.all()
+    
+    
     
     context={
         "dataAuditUniverse":dataAuditUniverse,
-        
+        "dataAliasUniverse":dataAliasUniverse,
+        "dataCauseUniverse":dataCauseUniverse,
     }
 
     return render(request, "./universe/moduleUniverseAudit.html",context)
