@@ -25,22 +25,69 @@
                     <th>Actividad</th>
                     <th>Proceso</th>
                     <th>Alias</th>
-                    <th>Causas</th>
-                   
-
                 </tr>
             </thead>
             <tbody>
-                {% for data in dataAuditUniverse %}
+                {% for audit in dataAuditUniverse %}
                 <tr>
-                    <td>{{data.code}}</td>
-                    <td>{{data.audit}}</td>
-                    <td>{{data.activities}}</td>
-                    <td>{{data.process}}</td>
-                    <td><a href="">Agregar Alias...</a></td>
-                    <td><a href="">Agregar Causa...</a></td>
+                    <td>{{audit.code}}</td>
+                    <td>{{audit.audit}}</td>
+                    <td>{{audit.activities}}</td>
+                    <td>{{audit.process}}</td>
+                    <td>
+                        <p>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#{{audit.code}}" aria-expanded="false" aria-controls="collapseExample">
+                              ver..
+                            </button>
+                        </p>
+                    </td>
                 </tr>
+                <tr>
+                    <td colspan="6">
+                        <div class="collapse" id="{{audit.code}}">
+                            <div class="card card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            Alias
+                                        </div>
+                                        <div class="col-4">
+                                            Descripción
+                                        </div>
+                                        <div class="col-4">
+                                            Causas
+                                        </div>
+                                    </div>
+                                {% for alias in dataAliasUniverse %}
+                                    <div class="row">
+                                        {% if alias.codeAudit == audit.code%}
+                                        <div class="col-4">
+                                            {{alias.alias}}
+                                        </div>
+                                        <div class="col-4">
+                                            {{alias.description}}
+                                        </div>
+                                        <div class="col-4">
+                                            {% for cause in dataCauseUniverse %}
+                                                {% if cause.alias == alias.alias %}
+                                                <p>
+                                                    {{cause.cause}}
+                                                </p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+                
                 {% endfor %}
+
             </tbody>
         </table>
       </div>

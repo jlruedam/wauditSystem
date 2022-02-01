@@ -50,10 +50,15 @@ def listProcessUniverse(request):
 def moduleUniverseAudit(request):
     # Muestra el renderizado inicial del módulo Universo Auditable
     dataAuditUniverse=UniverseAudit.objects.all()
+    dataAliasUniverse=UniverseAlias.objects.all()
+    dataCauseUniverse=UniverseCause.objects.all()
+    
+    
     
     context={
         "dataAuditUniverse":dataAuditUniverse,
-        
+        "dataAliasUniverse":dataAliasUniverse,
+        "dataCauseUniverse":dataCauseUniverse,
     }
 
     return render(request, "./universe/moduleUniverseAudit.html",context)
@@ -93,7 +98,63 @@ def subModuleAliasUniverse(request):
     }
     return render(request, "./universe/subModuleAliasUniverse.html", context)
 
+def subModuleCauseUniverse(request):
+    # Esta vista muestra el renderizado inicial del submódulo "Causas Universo"
+
+    dataAliasUniverse=UniverseAlias.objects.all()
+    
+    context={
+        "dataAliasUniverse":dataAliasUniverse,
+        
+    }
+    return render(request, "./universe/subModuleCauseUniverse.html", context)
+
 #*********load to DataBase
+def causeUniverse(request):
+     # Esta vista permite interactuar con el submódulo "Causas Universo", para guardar causas
+    # en la base de datos, capturando los datos obtenidos desde el formulario.
+    dataAliasUniverse=UniverseAlias.objects.all()
+    
+    # Se captura excepción para utilizar el caso inicial cuando la vista se llama desde el botón sin enviar parámetros 
+    # a través del POST; es cuando action y manageResponsable no se envian a través del POST.
+    try:
+    
+        action=request.POST['action']
+        alias=request.POST['selectAlias']
+        cause=request.POST['cause']
+        description=request.POST['causeDescription']
+
+        print("Los datos enviados son:",action, cause,alias,description)
+
+        context={
+            
+            "dataAliasUniverse":dataAliasUniverse,
+            "causeCreated":cause
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
+        if action=="guardar":
+
+            newCauseUniverse=UniverseCause(
+                cause=cause,
+                alias=alias,
+                description=description
+            )
+
+            newCauseUniverse.save()
+            return render(request, "./universe/subModuleCauseUniverse.html",context )
+
+        else:
+            return render(request, "./universe/subModuleCauseUniverse.html", context)
+
+    except Exception as error:
+        print("El error es:", error)
+        context={
+            "dataAliastUniverse":dataAliasUniverse,
+            
+        }
+        return render(request, "./universe/subModuleCauseUniverse.html",context)
+
 def aliasUniverse(request):
 
     # Esta vista permite interactuar con el submódulo "Alias Universo", para guardar alias

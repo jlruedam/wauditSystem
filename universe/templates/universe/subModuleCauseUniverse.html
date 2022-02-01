@@ -1,0 +1,52 @@
+{% extends "audit/index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "universe/menuUniverseAudit.html" %}
+
+<div class="submodule">
+
+
+    <fieldset class="fieldset-forms">
+        <legend class="fieldset-forms__legend">Causas Universo</legend>
+        <form class="forms" method="post" action="/causeUniverse/" id="formCauseUniverse">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;" id="action"/>
+           
+            <label class="forms__label" for="selectAlias" >
+                Alias hallazgo:
+                <select class="forms__select" name="selectAlias" id="selectAlias">
+                    <option value="">...</option>
+                    {% for alias in dataAliasUniverse %}
+                    <option value="{{alias.alias}}">{{alias.alias}}</option>
+                    {% endfor %}
+                <select>
+            </Label>
+                   
+            <label class="forms__label" for="cause">
+                Causa estimada:
+                <input class="forms__text" type="text" name="cause" id="cause"/>
+            </Label>
+
+            <label class="forms__label" for="causeDescription">
+                Descripción causa:
+                <textarea class="forms__textarea" name="causeDescription"  id="causeDescription"></textarea>
+            </Label>
+
+                  
+            <input class="forms__submit" type="submit" value="Guardar" id="saveCause" />
+                   
+            <p>Causa guardada:</p>
+        </form>
+
+    </fieldset>   
+
+
+
+</div>
+
+
+{% endblock %}
