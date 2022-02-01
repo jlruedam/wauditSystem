@@ -93,7 +93,21 @@ def subModuleAliasUniverse(request):
     }
     return render(request, "./universe/subModuleAliasUniverse.html", context)
 
+def subModuleCauseUniverse(request):
+    # Esta vista muestra el renderizado inicial del submódulo "Proceso Universo"
+
+    dataAuditUniverse=UniverseAudit.objects.all()
+    
+    context={
+        "dataAuditUniverse":dataAuditUniverse,
+        
+    }
+    return render(request, "./universe/subModuleAliasUniverse.html", context)
+
 #*********load to DataBase
+def causeUniverse(request):
+    pass
+
 def aliasUniverse(request):
 
     # Esta vista permite interactuar con el submódulo "Alias Universo", para guardar alias

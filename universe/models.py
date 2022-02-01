@@ -41,7 +41,12 @@ class UniverseAlias(models.Model):
     description=models.CharField(max_length=200)
     codeAudit=models.CharField(max_length=10)
 
-
+class UniverseCause(models.Model):
+    cause=models.CharField(max_length=200)
+    description=models.CharField(max_length=200)
+    alias=models.CharField(max_length=200)
+    
+    codeAudit=models.CharField(max_length=10)
 # class AuditAliasCause(models.Model):
 #     code=models.CharField(max_length=10)
 #     alias=models.CharField(max_length=200)
