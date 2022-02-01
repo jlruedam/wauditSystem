@@ -1,0 +1,52 @@
+{% extends "audit/index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "universe/menuUniverseAudit.html" %}
+
+<div class="submodule">
+
+
+    <fieldset class="fieldset-forms">
+        <legend class="fieldset-forms__legend">Alias Universo</legend>
+        <form class="forms" method="post" action="/aliasUniverse/" id="formAliasUniverse">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;" id="action"/>
+           
+            <label class="forms__label" for="selectCodeAudit" >
+                Gestión responsable:
+                <select class="forms__select" name="selectCodeAudit" id="selectCodeAudit">
+                    <option value="">...</option>
+                    {% for audit in dataAuditUniverse %}
+                    <option value="{{audit.code}}">{{audit.code}}</option>
+                    {% endfor %}
+                <select>
+            </Label>
+                   
+            <label class="forms__label" for="aliasFinding">
+                Alías de hallazgo
+                <input class="forms__text" type="text" name="aliasFinding" id="aliasFinding"/>
+            </Label>
+
+            <label class="forms__label" for="aliasDescription">
+                Descripción
+                <textarea class="forms__textarea" name="aliasDescription"  id="aliasDescription"></textarea>
+            </Label>
+
+                  
+            <input class="forms__submit" type="submit" value="Guardar" id="saveAlias" />
+                   
+            <p>Alias guardado:</p>
+        </form>
+
+    </fieldset>   
+
+
+
+</div>
+
+
+{% endblock %}

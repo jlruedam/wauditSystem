@@ -14,7 +14,6 @@ class UniverseMacroproces(models.Model):
     def __str__(self):
         return (f"{self.macroprocess}-{self.responsable}")
      
-    
 class UniverseProces(models.Model): 
     numProcess=models.CharField(max_length=5,unique=True, blank=True, null=True)
     process=models.CharField(max_length=100)
@@ -23,20 +22,24 @@ class UniverseProces(models.Model):
     def __str__(self):
         return (f"{self.process}-{self.responsable}-{self.macroprocess}")
 
-    
+class UniverseAudit(models.Model):
+    code=models.CharField(max_length=10)
+    numAudit=models.CharField(max_length=10)
+    generalAudit=models.CharField(max_length=25)
+    audit=models.CharField(max_length=100)
+    activities=models.CharField(max_length=100)
+    risk=models.CharField(max_length=100)
+    responsable=models.CharField(max_length=100)
+    macroProcess=models.CharField(max_length=100)
+    process=models.CharField(max_length=100)
+    # priority=models.CharField(max_length=100)
+    # place=models.CharField(max_length=100)
+    # type=models.CharField(max_length=100)
 
-# class AuditUniverse(models.Model):
-#     code=models.CharField(max_length=10)
-#     generalAudit=models.CharField(max_length=25)
-#     audit=models.CharField(max_length=100)
-#     activities=models.CharField(max_length=100)
-#     risk=models.CharField(max_length=100)
-#     priority=models.CharField(max_length=100)
-#     macroProcessResponsable=models.CharField(max_length=100)
-#     macroProcess=models.CharField(max_length=100)
-#     process=models.CharField(max_length=100)
-#     place=models.CharField(max_length=100)
-#     type=models.CharField(max_length=100)
+class UniverseAlias(models.Model):
+    alias=models.CharField(max_length=200)
+    description=models.CharField(max_length=200)
+    codeAudit=models.CharField(max_length=10)
 
 
 # class AuditAliasCause(models.Model):

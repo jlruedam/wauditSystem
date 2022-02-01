@@ -2,13 +2,22 @@ from django.urls import path
 from universe import views
 
 urlpatterns = [
-    path('prueba/',views.prueba),
-    path('universe/',views.universeAudit, name='universeAudit'),
-    path('moduleProcessUniverse/',views.moduleProcessUniverse, name='moduleProcessUniverse'),
+    #Queries
+    path('listProcessUniverse/', views.listProcessUniverse, name='listProcessUniverse'),
+    #Modules
+    path('moduleUniverseAudit/',views.moduleUniverseAudit, name='moduleUniverseAudit'),
+    #Submodules
+    path('subModuleProcessUniverse/',views.subModuleProcessUniverse, name='subModuleProcessUniverse'),
+    path('subModuleAuditUniverse/',views.subModuleAuditUniverse, name='subModuleAuditUniverse'),
+    path('subModuleAliasUniverse/',views.subModuleAliasUniverse, name='subModuleAliasUniverse'),
+    #load to DataBase
+    path('aliasUniverse/',views.aliasUniverse, name='aliasUniverse'),
+    path('auditUniverse/',views.auditUniverse, name='auditUniverse'),
     path('processUniverse/',views.processUniverse, name='processUniverse'),
     path('manageResponsableUniverse/',views.manageResponsableUniverse, name='manageResponsableUniverse'),
     path('macroProcessUniverse/',views.macroProcessUniverse, name='macroProcessUniverse'),
-    path('moduleAuditUniverse/',views.moduleAuditUniverse, name='moduleAuditUniverse'),
+    # urls para las vistas prueba
     path('cargarPersona/',views.cargarPersona, name='cargarPersona'),
-    path('listProcessUniverse/', views.listProcessUniverse, name='listProcessUniverse'),
+    path('prueba/',views.prueba),
+    
 ]

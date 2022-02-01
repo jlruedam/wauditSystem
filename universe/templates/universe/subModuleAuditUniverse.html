@@ -1,0 +1,96 @@
+
+{% extends "audit/index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "universe/menuUniverseAudit.html" %}
+
+
+<div class="submodule">
+  
+    <fieldset class="fieldset-forms">
+        <legend class="fieldset-forms__legend">Auditoría Universo</legend>
+        <form class="forms" method="post" action="/auditUniverse/" id="formAuditUniverse">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;"/>
+
+            <label class="forms__label" for="selectResponsable" >
+                Gestión responsable:
+                <select class="forms__select" name="selectResponsable" id="selectResponsable">
+                    <option value="">...</option>
+                    {% for responsable in dataManageResponsable %}
+                    <option value="{{responsable.codeManage}}:{{responsable.responsable}}">{{responsable.codeManage}}:{{responsable.responsable}}</option>
+                    {% endfor %}
+                <select>
+            </Label>
+
+            <label class="forms__label" for="selectMacroprocess" >
+                Macroproceso:
+                <select class="forms__select" name="selectMacroprocess" id="selectMacroprocess">
+                    <option value="">...</option>
+                </select>
+            </Label>
+
+            <label class="forms__label" for="selectProcess">
+                Proceso:
+                <select class="forms__select" name="selectProcess" id="selectProcess">
+                    <option value="">...</option>
+                </select>
+            </Label>
+
+            <label class="forms__label" for="numAuditUniverse">
+                Número de auditoría:
+                <input class="forms__text" type="number" name="numAuditUniverse" id="numAuditUniverse"/>
+            </Label>
+            
+
+            <label class="forms__label" for="codeAuditUniverse">
+                Código auditoría:
+                <input class="forms__text" type="text" name="codeAuditUniverse" id="codeAuditUniverse"/>
+            </Label>
+            
+
+            <label class="forms__label" for="generalAuditUniverse">
+                Auditoría general:
+                <input class="forms__text" type="text" name="generalAuditUniverse" id="generalAuditUniverse"/>
+            </Label>
+            
+
+            <label class="forms__label" for="nameAuditUniverse">
+                Nombre auditoría:
+                <input class="forms__text" type="text" name="nameAuditUniverse" id="nameAuditUniverse"/>
+            </Label>
+            
+
+            <label class="forms__label" for="activityAuditUniverse">
+                Actividades auditoría:
+                <input class="forms__text" type="text" name="activityAuditUniverse" id="activityAuditUniverse"/>
+            </Label>
+
+            <label class="forms__label" for="riskAuditUniverse">
+                Riesgos del proceso:
+                <textarea class="forms__textarea" name="riskAuditUniverse"  id="riskAuditUniverse"></textarea>
+            </Label>
+
+            
+
+            <input class="forms__submit" type="submit" value="Guardar" id="botonGuardarAuditU" />
+
+            <p>Auditoría guardada:{{auditCreated}}</p>
+
+            <!--Se podría pasar una lista con enlaces que pasen paramentros a una vista para cargar la lista
+            correspondiente a cada una de las opciones de gestión-->
+
+        </form>
+
+    </fieldset>   
+
+</div>
+
+<script src="{% static 'universe/scripts/listQueries.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+{% endblock %}
