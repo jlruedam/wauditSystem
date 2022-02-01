@@ -21,8 +21,8 @@ def listProcessUniverse(request):
 
     search=request.GET['buscar']
     type_data=request.GET['type']
-    print("Buscar:" + search)
-    print("Tipo: "+type_data)
+    # print("Buscar:" + search)
+    # print("Tipo: "+type_data)
 
     if type_data=='responsable':
 
@@ -32,7 +32,7 @@ def listProcessUniverse(request):
         for data in dataMacroProcess:
             macro.append(data['macroprocess'])
             
-        print(macro)
+        # print(macro)
         return JsonResponse({"dataMacroProcess":macro})
     
     if type_data=='macroprocess':
@@ -40,11 +40,11 @@ def listProcessUniverse(request):
         dataProcess=list(UniverseProces.objects.all().filter(macroprocess=search).values())
     
         for data in dataProcess:
-            print(data)
+            # print(data)
             process.append(data['numProcess']+"/"+data['process'])
             
 
-        print(process)
+        # print(process)
         return JsonResponse({"dataProcess":process}) 
 #*********Modules
 def moduleUniverseAudit(request):
@@ -82,7 +82,6 @@ def subModuleProcessUniverse(request):
     }
     return render(request, "./universe/subModuleProcessUniverse.html", context)
     
-
 def subModuleAliasUniverse(request):
     # Esta vista muestra el renderizado inicial del submódulo "Proceso Universo"
 
@@ -93,11 +92,59 @@ def subModuleAliasUniverse(request):
         
     }
     return render(request, "./universe/subModuleAliasUniverse.html", context)
+
 #*********load to DataBase
+def aliasUniverse(request):
+
+    # Esta vista permite interactuar con el submódulo "Alias Universo", para guardar alias
+    # en la base de datos, capturando los datos obtenidos desde el formulario.
+    dataAuditUniverse=UniverseAudit.objects.all()
+    
+    # Se captura excepción para utilizar el caso inicial cuando la vista se llama desde el botón sin enviar parámetros 
+    # a través del POST; es cuando action y manageResponsable no se envian a través del POST.
+    try:
+    
+        action=request.POST['action']
+        codeAudit=request.POST['selectCodeAudit']
+        alias=request.POST['aliasFinding']
+        description=request.POST['aliasDescription']
+
+        print("Los datos enviados son:",action, codeAudit,alias,description)
+
+        context={
+            
+            "dataAuditUniverse":dataAuditUniverse,
+            "aliasCreated":alias
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
+        if action=="guardar":
+
+            newAliasUniverse=UniverseAlias(
+                codeAudit=codeAudit,
+                alias=alias,
+                description=description
+            )
+
+            newAliasUniverse.save()
+            return render(request, "./universe/subModuleAliasUniverse.html",context )
+
+        else:
+            return render(request, "./universe/subModuleAaliasUniverse.html", context)
+
+    except Exception as error:
+        print("El error es:", error)
+        context={
+            "dataAuditUniverse":dataAuditUniverse,
+            
+        }
+        return render(request, "./universe/subModuleAliasUniverse.html",context)
+
 def auditUniverse(request):
     # Esta vista permite interactuar con el submódulo "Auditorías Universo", para guardar una auditoria
     # en la base de datos, capturando los datos obtenidos desde el formulario.
     dataManageResponsable=UniverseManageResponsable.objects.all()
+    
     # Se captura excepción para utilizar el caso inicial cuando la vista se llama desde el botón sin enviar parámetros 
     # a través del POST; es cuando action y manageResponsable no se envian a través del POST.
     try:
@@ -112,8 +159,12 @@ def auditUniverse(request):
         nameAudit=request.POST['nameAuditUniverse']
         activity=request.POST['activityAuditUniverse']
         risk=request.POST['riskAuditUniverse']
-        
 
+
+        dataProcess=list(UniverseProces.objects.all().filter(numProcess=process).values())
+
+        
+    
         context={
             
             "dataManageResponsable":dataManageResponsable,
@@ -132,7 +183,7 @@ def auditUniverse(request):
                 risk=risk,
                 responsable=responsable,
                 macroProcess=macroProcess,
-                process=process
+                process=dataProcess[0]['process']
             )
 
             newAuditUniverse.save()
@@ -142,13 +193,12 @@ def auditUniverse(request):
             return render(request, "./universe/subModuleAuditUniverse.html", context)
 
     except Exception as e:
-
+        print(e)
         context={
             "dataManageResponsable":dataManageResponsable,
             
         }
         return render(request, "./universe/subModuleAuditUniverse.html",context)
-
 
 def manageResponsableUniverse(request):
     # Esta vista permite interactuar con el submódulo "Proceso Universo", para guardar una Gestioón responsable
@@ -187,7 +237,7 @@ def manageResponsableUniverse(request):
             return render(request, "./universe/subModuleprocessUniverse.html", context)
 
     except Exception as e:
-
+        print(e)
         context={
             "dataManageResponsable":dataManageResponsable,
             "dataMacroProcess":dataMacroProcess

@@ -11,6 +11,7 @@ urlpatterns = [
     path('subModuleAuditUniverse/',views.subModuleAuditUniverse, name='subModuleAuditUniverse'),
     path('subModuleAliasUniverse/',views.subModuleAliasUniverse, name='subModuleAliasUniverse'),
     #load to DataBase
+    path('aliasUniverse/',views.aliasUniverse, name='aliasUniverse'),
     path('auditUniverse/',views.auditUniverse, name='auditUniverse'),
     path('processUniverse/',views.processUniverse, name='processUniverse'),
     path('manageResponsableUniverse/',views.manageResponsableUniverse, name='manageResponsableUniverse'),

@@ -32,11 +32,14 @@ class UniverseAudit(models.Model):
     responsable=models.CharField(max_length=100)
     macroProcess=models.CharField(max_length=100)
     process=models.CharField(max_length=100)
-
     # priority=models.CharField(max_length=100)
     # place=models.CharField(max_length=100)
     # type=models.CharField(max_length=100)
 
+class UniverseAlias(models.Model):
+    alias=models.CharField(max_length=200)
+    description=models.CharField(max_length=200)
+    codeAudit=models.CharField(max_length=10)
 
 
 # class AuditAliasCause(models.Model):

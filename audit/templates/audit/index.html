@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static './audit/css/screen480px.css'%}" media="screen and (min-width:480px)"/>
     <link rel="stylesheet" href="{% static './audit/css/screen720px.css'%}" media="screen and (min-width:720px)"/>
     <link rel="stylesheet" href="{% static './audit/css/screen1000px.css'%}" media="screen and (min-width:1000px)"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
     <!--Para que pueda tomar la plantilla se debe crear un directorio llamado Templates-->
     <!--Para que pueda tomar el archivo css se debe crear un directorio llama static y meter los archivos css dentro-->
@@ -25,14 +26,14 @@
     <main class="main">
         <aside class="aside">
             <h1 class="aside__title">W-AUDIT</h1>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="{% url 'index'%}">AUDITORÍAS</a></button></li>
-                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="planesMejora.html">PLANES DE MEJORA</a></button></li>
-                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="{% url 'moduleUniverseAudit'%}">UNIVERSO AUDITABLE</a></button></li>
-                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="controlInterno.html">CONTROL INTERNO</a></button></li>
-                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="Informes.html">INFORMES</a></p></button></li>
-                    <li class="nav-list__item"><button class="btn nav__btn"><a class="nav__link" href="auditados.html">AUDITADOS</a></button></li>
+            <nav class="navBar">
+                <ul class="navBar-list">
+                    <li class="navBar-list__item"><button class="boton navBar__boton"><a class="navBar__link" href="{% url 'index'%}">AUDITORÍAS</a></button></li>
+                    <li class="navBar-list__item"><button class="boton navBar__boton"><a class="navBar__link" href="planesMejora.html">PLANES DE MEJORA</a></button></li>
+                    <li class="navBar-list__item"><button class="boton navBar__boton"><a class="navBar__link" href="{% url 'moduleUniverseAudit'%}">UNIVERSO AUDITABLE</a></button></li>
+                    <li class="navBar-list__item"><button class="boton navBar__boton"><a class="navBar__link" href="controlInterno.html">CONTROL INTERNO</a></button></li>
+                    <li class="navBar-list__item"><button class="boton navBar__boton"><a class="navBar__link" href="Informes.html">INFORMES</a></p></button></li>
+                    <li class="navBar-list__item"><button class="boton navBar__boton"><a class="navBar__link" href="auditados.html">AUDITADOS</a></button></li>
                 </ul>
             </nav>
         </aside>
@@ -40,10 +41,13 @@
         <section class="panel-section">
             {% block content %}
                 {% include "audit/menuManageAudit.html" %}
-                <p>
-                    Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
-                    De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
-                </p>
+                <div class="enunciado">
+                    <h3>
+                        Modulo de Gestión de auditoría:<br/> Aquí podrás crear y editar tus actividades de auditorías a realizar. 
+                        De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
+                    </h3>
+                </div>
+                
 
             {% endblock %}
         </section>
@@ -53,5 +57,7 @@
         <p><h1><i>"Lo Mejor está por venir..."</i></h1></p>
     </footer>
     
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>
