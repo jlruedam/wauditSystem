@@ -7,7 +7,6 @@
 
     {% include "universe/menuUniverseAudit.html" %}
 
-
 <div class="submodule">
 
     <!--Formulario Agregar Proceso-->
@@ -50,9 +49,7 @@
         </form>
     </fieldset>
 
-
     <!--Formulario Agregar Macroproceso-->
-   
     <fieldset class="fieldset-forms">
         <legend class="fieldset-forms__legend">Agregar macroproceso:</legend>
 
@@ -78,9 +75,8 @@
             <p>Macroproceso guardado:{{macroProcess}}</p>
         </form>
     </fieldset> 
-
+    
     <!--Formulario Agregar gestión responsable-->
-
     <fieldset class="fieldset-forms"> 
         <legend class="fieldset-forms__legend">Agregar gestión:</legend>
 
@@ -105,14 +101,64 @@
 
     </fieldset>
     
-</div>
+</div> 
 
+<br><br>
 
-  
-    
-    
+<ul>
+    <li>
+        <strong>Gestión responsable</strong> 
+    </li>
+    {% for responsable in dataMangeResponsable %}
+    <li>
+        {{responsable.responsable}}
+    </li>
+    {% endfor %}
+</ul>
 
-    
+<!-- <div class="container border">
+    <div class="row border">
+        <div class="col-4">
+            <strong>Gestión responsable</strong> 
+        </div>
+        <div class="col-4">
+            <strong>Macroproceso</strong> 
+        </div>
+        <div class="col-4">
+            <strong>Proceso</strong> 
+        </div>
+    </div>
+    {% for responsable in dataManageResponsable %}
+    <div class="row">
+        <div class="col-4">
+            {{responsable.responsable}}
+        </div>
+        
+        <div class="col-4">
+        {% for macro in dataMacroProcess%}
+            <div class="row">
+                {% if macro.responsable == responsable.responsable %}
+                    {{macro.macroprocess}}
+                {% endif %}
+            </div>
+        
+        </div>
+        {% endfor %}
+        <div class="col-4">
+        {% for macro in dataMacroProcess%}
+            {% for process in dataProcess %}
+            <div class="row">
+                {% if process.macroprocess == macro.macroprocess %}
+                    {{process.process}}
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div> -->
+      
  
 {% endblock %}
 

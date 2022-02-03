@@ -54,7 +54,6 @@ def moduleUniverseAudit(request):
     dataCauseUniverse=UniverseCause.objects.all()
     
     
-    
     context={
         "dataAuditUniverse":dataAuditUniverse,
         "dataAliasUniverse":dataAliasUniverse,
@@ -81,9 +80,11 @@ def subModuleProcessUniverse(request):
 
     dataManageResponsable=UniverseManageResponsable.objects.all()
     dataMacroProcess=UniverseMacroproces.objects.all()
+    dataProcess=UniverseProces.objects.all()
     context={
         "dataManageResponsable":dataManageResponsable,
         "dataMacroProcess":dataMacroProcess,
+        "dataProcess":dataProcess
     }
     return render(request, "./universe/subModuleProcessUniverse.html", context)
     
