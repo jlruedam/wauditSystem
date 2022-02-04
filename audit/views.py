@@ -4,3 +4,5 @@ from django.shortcuts import render
 def index(request):
     return render(request, "./audit/index.html")
 
+def subModuleCreateAudit(request):
+    return render(request, "./audit/subModuleCreateAudit.html")

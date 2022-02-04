@@ -152,6 +152,40 @@ html{
 
 }
 
+.formRegister{
+    border:1px var(--mainYellow) solid;
+    box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 2rem auto;
+    
+}
+
+.formRegister__field{
+    /* border: 1px red solid; */
+    box-sizing: border-box;
+    flex-basis: 25rem;
+    border:1px var(--mainYellow) solid;
+    background-color: var(--fontMainColor);
+    border-radius: 10px;
+    margin: 0.5rem;
+    box-shadow: 0px 5px 5px 0px rgb(0, 0, 0);
+    padding: 10px;
+    
+    
+}
+
+
+.formRegister .formRegister__field_xpand{
+    flex-basis: 100%;
+}
+
 .fieldset-forms{
     margin: 10px;
     border-radius: 10px;
@@ -159,6 +193,13 @@ html{
     min-height: 40rem;
     border: var(--mainBlue) 1px solid;
     box-shadow: 0px 10px 10px 0px rgb(0, 0, 0);
+}
+
+
+.fieldset-forms_xpand{
+    
+    max-width: 100rem;
+    min-height: 40rem;
     
 }
 
@@ -176,7 +217,6 @@ html{
 }
 
 
-
 .forms .forms__select{
     width: 90%;
     border-radius: 10px;
@@ -185,7 +225,21 @@ html{
     text-align: center;
 }
 
+/* .table-responsive .forms__select{
+    width: 20rem;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
 
+.table-responsive .forms__label{
+    width: 90%;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+} */
 
 .forms span{
     width: 90%;
@@ -231,6 +285,27 @@ html{
 .forms .forms__submit:active{
     background-color: aqua;
 }
+
+
+
+/* .forms-container{
+    border: 1px black solid;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.forms-container__row{
+    border: red 1px solid;
+    width: 100%;
+    
+}
+
+
+.forms-container__col{
+   border:1px blue solid;
+} */
 
 .footer{
     border-top: 1px solid var(--mainYellow);

@@ -1,0 +1,140 @@
+
+{% extends "./index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "./menuManageAudit.html" %}
+
+
+<div class="submodule">
+
+    
+
+        <form class="forms" action="">
+            <div class="formRegister">
+                <div class="formRegister__field">
+                    <label class="forms__label" for="typeAudit">
+                        <span>Tipo Auditoría: </span>
+                    </label>
+                    <select class="forms__select" name="typeAudit" id="typeAudit">
+                        <option value="plan">Plan de auditoría</option>
+                        <option value="special">Auditoría especial</option>
+                        <option value="support">Apoyo otras dependencias</option>
+                    </select> 
+                </div>
+
+                <div class="formRegister__field">
+                    <label class="forms__label" for="auditors">
+                        <span>Auditor: </span>
+                    </label>
+                    <select class="forms__select" name="auditors" id="auditors">
+                        <option value="Auditor1">Radamel Falcao Garcia</option>
+                        <option value="Auditor2">James Rodriguez</option>
+                        <option value="Auditor3">Juan Guillermo Cuadrado</option>
+                    </select>
+                </div>
+
+                <div class="formRegister__field">
+                    <label class="forms__label" for="Zonas">
+                        <span>Zonas: </span>
+                    </label>
+                    <select class="forms__select" name="Zonas" id="Zonas">
+                        <option value="Costa1">Costa 1</option>
+                        <option value="Costa2">Costa 2</option>
+                        <option value="Centro">Centro </option>
+                    </select>
+                </div>
+
+                <div class="formRegister__field">
+                    <label for="Departamentos">
+                        <span>Departamento: </span>
+                        <select class="forms__select" name="Departamento" id="Departamento">
+                            <option value="departamento">Cesar</option>
+                            <option value="departamento">Santander</option>
+                            <option value="departamento">Bolívar</option> 
+                        </select>
+                    </label>
+                </div>
+                <div class="formRegister__field">
+                    <label for="Municipio">
+                        <span>Municipios:</span> 
+                        <select class="forms__select" name="Municipios" id="Municipios">
+                            <option value="Auditor1">Valledupar</option>
+                            <option value="Auditor2">Bucaramanga</option>
+                            <option value="Auditor3">Cartagena</option>
+                        </select> 
+                    </label>
+                </div>
+
+                <div class="formRegister__field">
+                    <label for="codigoAudit">
+                        <span>Código Auditoría:</span>
+                        <select class="forms__select" name="codigoAudit" id="codigoAudit">
+                            <option value="A01">Auditoría-01</option>
+                            <option value="A02">Auditoría-02</option>
+                            <option value="A03">Auditoría-03</option>
+                        </select> 
+                    </label>
+                </div>
+
+                <div class="formRegister__field">
+                    <label for="grupoAudit">
+                        <span>Grupo Auditoría: </span> 
+                        <select class="forms__select" name="grupoAudit" id="grupoAudit">
+                            <option value="individual">Actividad individual</option>
+                            <option value="Grupo">Actividades grupal</option>
+                            <option value="Asistencia">Apoyo/Asistencia</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="formRegister__field formRegister__field_xpand">
+                    <label for="DesAudit">
+                        <span>Auditoría:</span>
+                        <p>
+                            Aquí debe ir el contenido el nombre de la auditoría según lo creado en el universo auditable.<br/>
+                            Aenean ornare placerat accumsan. Vivamus vel convallis odio, vitae vulputate lorem. Nullam vehicula tempor lectus vitae maximus. Fusce hendrerit leo et elit hendrerit hendrerit. Nullam bibendum urna facilisis justo pellentesque ornare. Nam at enim vel tortor consequat ultrices. Quisque fermentum lobortis sodales. Aliquam vel feugiat tellus, vitae ultrices purus. Curabitur quis dui sit amet lorem hendrerit imperdiet non pharetra magna. Nunc in vehicula felis. Suspendisse potenti.
+                        <p>
+                    </label>
+                </div>
+
+                <div class="formRegister__field formRegister__field_xpand">
+                    <label for="ActAudit">
+                        <span>Actividad:</span>
+                        <p >
+                            Aquí debe ir el del detalle de las activiades que se deberían incluir dentro la Auditoría.<br/>
+                            Aenean ornare placerat accumsan. Vivamus vel convallis odio, vitae vulputate lorem. 
+                            Nullam vehicula tempor lectus vitae maximus. Fusce hendrerit leo et elit hendrerit hendrerit. 
+                            Nullam bibendum urna facilisis justo pellentesque ornare. Nam at enim vel tortor consequat ultrices. 
+                            Quisque fermentum lobortis sodales. Aliquam vel feugiat tellus, vitae ultrices purus. 
+                            Curabitur quis dui sit amet lorem hendrerit imperdiet non pharetra magna. 
+                            Nunc in vehicula felis. Suspendisse potenti.
+                        </p> 
+                    </label>
+                </div>
+
+                <div class="formRegister__field formRegister__field_xpand">
+                    <label for="DesAcitividad">
+                        <span>Detalle Actividad:</span> 
+                        <textarea name="DesAcitividad"></textarea>
+                    </label>
+                </div>
+
+                <div class="formRegister__field">
+                    <input type="submit" value="Guardar" id="botonG"/>
+                </div>
+            
+
+            </div>
+        </form>       
+
+   
+    
+</div>
+
+
+    
+{% endblock %}
