@@ -159,7 +159,7 @@ html{
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     box-sizing: border-box;
     width: 90%;
@@ -171,7 +171,7 @@ html{
     /* border: 1px red solid; */
     box-sizing: border-box;
     flex-basis: 25rem;
-    border:1px var(--mainYellow) solid;
+    /* border:1px var(--mainYellow) solid; */
     background-color: var(--fontMainColor);
     border-radius: 10px;
     margin: 0.5rem;

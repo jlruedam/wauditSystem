@@ -80,7 +80,7 @@
                     </label>
                 </div>
 
-                <div class="formRegister__field">
+                <!-- <div class="formRegister__field">
                     <label for="grupoAudit">
                         <span>Grupo Auditoría: </span> 
                         <select class="forms__select" name="grupoAudit" id="grupoAudit">
@@ -88,6 +88,34 @@
                             <option value="Grupo">Actividades grupal</option>
                             <option value="Asistencia">Apoyo/Asistencia</option>
                         </select>
+                    </label>
+                </div> -->
+
+                <div class="formRegister__field">
+                    <label for="grupoAudit">
+                        <span>Ambiente </span> 
+                        <select class="forms__select" name="grupoAudit" id="grupoAudit">
+                            <option value="individual">Nodo</option>
+                            <option value="Grupo">Oficina</option>
+                            <option value="Asistencia">Red</option>
+                            <option value="Asistencia">Bodega</option>
+                            <option value="Asistencia">Funcionario</option>
+                            <option value="Asistencia">Proceso</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="formRegister__field">
+                    <label for="grupoAudit">
+                        <span>Detalle Ambiente: </span> 
+                        <input type="text" class="forms__text">
+                    </label>
+                </div>
+
+                <div class="formRegister__field">
+                    <label for="grupoAudit">
+                        <span>Fecha Planeación: </span> 
+                        <input type="date" class="forms__text">
                     </label>
                 </div>
 
@@ -119,7 +147,7 @@
                 <div class="formRegister__field formRegister__field_xpand">
                     <label for="DesAcitividad">
                         <span>Detalle Actividad:</span> 
-                        <textarea name="DesAcitividad"></textarea>
+                        <textarea class="forms__textarea" name="DesAcitividad"></textarea>
                     </label>
                 </div>
 
