@@ -23,7 +23,7 @@
                     <th>Código</th>
                     <th>Auditoría</th>
                     <th>Actividad</th>
-                    <th>Proceso</th>
+                    <!-- <th>Proceso</th> -->
                     <th>Alias</th>
                 </tr>
             </thead>
@@ -32,8 +32,8 @@
                 <tr>
                     <td>{{audit.code}}</td>
                     <td>{{audit.audit}}</td>
-                    <td>{{audit.activities}}</td>
-                    <td>{{audit.process}}</td>
+                    <td><p style="width: 50rem; ">{{audit.activities}}</p></td>
+                    <!-- <td>{{audit.process}}</td> -->
                     <td>
                         <p>
                             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#{{audit.code}}" aria-expanded="false" aria-controls="collapseExample">
