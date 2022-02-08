@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from universe.models import *
 from audit.models import *
@@ -37,7 +38,12 @@ def listUniverse(request):
   
 #*********Modules
 def index(request):
-    return render(request, "./audit/index.html")
+    dataAudit=Audit.objects.all()
+    context={
+        "dataAudit":dataAudit,
+    }
+
+    return render(request, "./audit/index.html",context)
 
 #*********Submodules
 def subModuleCreateAudit(request):
