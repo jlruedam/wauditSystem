@@ -12,7 +12,10 @@
 <div class="submodule">
    
 
-        <form class="forms" action="">
+        <form class="forms" method="post" action="/audit/" id="formAudit">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;"/>
+            
             <div class="formRegister">
                 <div class="formRegister__field">
                     <label class="forms__label" for="typeAudit">
@@ -37,10 +40,10 @@
                 </div>
 
                 <div class="formRegister__field">
-                    <label class="forms__label" for="Zonas">
+                    <label class="forms__label" for="zones">
                         <span>Zonas: </span>
                     </label>
-                    <select class="forms__select" name="Zonas" id="Zonas">
+                    <select class="forms__select" name="zones" id="zones">
                         <option value="Costa1">Costa 1</option>
                         <option value="Costa2">Costa 2</option>
                         <option value="Centro">Centro </option>
@@ -48,33 +51,35 @@
                 </div>
 
                 <div class="formRegister__field">
-                    <label for="Departamentos">
+                    <label for="state">
                         <span>Departamento: </span>
-                        <select class="forms__select" name="Departamento" id="Departamento">
-                            <option value="departamento">Cesar</option>
-                            <option value="departamento">Santander</option>
-                            <option value="departamento">Bolívar</option> 
+                        <select class="forms__select" name="state" id="state">
+                            <option value="Cesar">Cesar</option>
+                            <option value="Santander">Santander</option>
+                            <option value="Bolívar">Bolívar</option> 
                         </select>
                     </label>
                 </div>
                 <div class="formRegister__field">
-                    <label for="Municipio">
+                    <label for="city">
                         <span>Municipios:</span> 
-                        <select class="forms__select" name="Municipios" id="Municipios">
-                            <option value="Auditor1">Valledupar</option>
-                            <option value="Auditor2">Bucaramanga</option>
-                            <option value="Auditor3">Cartagena</option>
+                        <select class="forms__select" name="city" id="city">
+                            <option value="Valledupar">Valledupar</option>
+                            <option value="Bucaramanga">Bucaramanga</option>
+                            <option value="Cartagena">Cartagena</option>
                         </select> 
                     </label>
                 </div>
 
                 <div class="formRegister__field">
-                    <label for="codigoAudit">
+                    <label for="codeAudit">
                         <span>Código Auditoría:</span>
-                        <select class="forms__select" name="codigoAudit" id="codigoAudit">
-                            <option value="A01">Auditoría-01</option>
-                            <option value="A02">Auditoría-02</option>
-                            <option value="A03">Auditoría-03</option>
+                        
+                        <select class="forms__select" name="codeAudit" id="codeAudit">
+                            <option value="...">...</option>
+                            {% for audit in dataAuditUniverse %}
+                            <option value="{{audit.code}}">{{audit.code}}</option>
+                            {% endfor %}
                         </select> 
                     </label>
                 </div>
@@ -91,67 +96,60 @@
                 </div> -->
 
                 <div class="formRegister__field">
-                    <label for="grupoAudit">
+                    <label for="ambient">
                         <span>Ambiente </span> 
-                        <select class="forms__select" name="grupoAudit" id="grupoAudit">
-                            <option value="individual">Nodo</option>
-                            <option value="Grupo">Oficina</option>
-                            <option value="Asistencia">Red</option>
-                            <option value="Asistencia">Bodega</option>
-                            <option value="Asistencia">Funcionario</option>
-                            <option value="Asistencia">Proceso</option>
+                        <select class="forms__select" name="ambient" id="ambient">
+                            <option value="nodo">Nodo</option>
+                            <option value="oficina">Oficina</option>
+                            <option value="red">Red</option>
+                            <option value="bodega">Bodega</option>
+                            <option value="funcionario">Funcionario</option>
+                            <option value="proceso">Proceso</option>
                         </select>
                     </label>
                 </div>
 
                 <div class="formRegister__field">
-                    <label for="grupoAudit">
+                    <label for="detailAmbient">
                         <span>Detalle Ambiente: </span> 
-                        <input type="text" class="forms__text">
+                        <input type="text" class="forms__text" name="detailAmbient" id="detailAmbient">
                     </label>
                 </div>
 
                 <div class="formRegister__field">
-                    <label for="grupoAudit">
+                    <label for="datePlan">
                         <span>Fecha Planeación: </span> 
-                        <input type="date" class="forms__text">
+                        <input type="date" class="forms__text" name="datePlan" id="datePlan">
                     </label>
                 </div>
 
                 <div class="formRegister__field formRegister__field_xpand">
-                    <label for="DesAudit">
+                    <label for="nameAudit">
                         <span>Auditoría:</span>
-                        <p>
-                            Aquí debe ir el contenido el nombre de la auditoría según lo creado en el universo auditable.<br/>
-                            Aenean ornare placerat accumsan. Vivamus vel convallis odio, vitae vulputate lorem. Nullam vehicula tempor lectus vitae maximus. Fusce hendrerit leo et elit hendrerit hendrerit. Nullam bibendum urna facilisis justo pellentesque ornare. Nam at enim vel tortor consequat ultrices. Quisque fermentum lobortis sodales. Aliquam vel feugiat tellus, vitae ultrices purus. Curabitur quis dui sit amet lorem hendrerit imperdiet non pharetra magna. Nunc in vehicula felis. Suspendisse potenti.
+                        <p id="nameAudit">
+                           
                         <p>
                     </label>
                 </div>
 
                 <div class="formRegister__field formRegister__field_xpand">
-                    <label for="ActAudit">
+                    <label for="activities">
                         <span>Actividad:</span>
-                        <p >
-                            Aquí debe ir el del detalle de las activiades que se deberían incluir dentro la Auditoría.<br/>
-                            Aenean ornare placerat accumsan. Vivamus vel convallis odio, vitae vulputate lorem. 
-                            Nullam vehicula tempor lectus vitae maximus. Fusce hendrerit leo et elit hendrerit hendrerit. 
-                            Nullam bibendum urna facilisis justo pellentesque ornare. Nam at enim vel tortor consequat ultrices. 
-                            Quisque fermentum lobortis sodales. Aliquam vel feugiat tellus, vitae ultrices purus. 
-                            Curabitur quis dui sit amet lorem hendrerit imperdiet non pharetra magna. 
-                            Nunc in vehicula felis. Suspendisse potenti.
+                        <p id="activities">
+                            
                         </p> 
                     </label>
                 </div>
 
                 <div class="formRegister__field formRegister__field_xpand">
-                    <label for="DesAcitividad">
+                    <label for="detailAct">
                         <span>Detalle Actividad:</span> 
-                        <textarea class="forms__textarea" name="DesAcitividad"></textarea>
+                        <textarea class="forms__textarea" name="detailAct" id="detailAct"></textarea>
                     </label>
                 </div>
 
                 <div class="formRegister__field">
-                    <input type="submit" value="Guardar" id="botonG"/>
+                    <input type="submit" value="Guardar" id="saveAudit"/>
                 </div>
             
 
@@ -162,6 +160,7 @@
     
 </div>
 
-
+<script src="{% static 'audit/scripts/queriesToUniverse.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
 {% endblock %}
