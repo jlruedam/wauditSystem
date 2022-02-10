@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'universe',
     'audit',
+    'import_export',
 ]
 
 MIDDLEWARE = [

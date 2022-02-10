@@ -47,6 +47,95 @@
                         De igual forma, también podrás relacionar los hallazgos que se encuentren y editarlos cuandos sea necesario.
                     </h3>
                 </div>
+
+                <div class="submodule">
+
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Auditor</th>
+                                    <th>Departamento</th>
+                                    <th>Ciudad</th>
+                                    <th>Fecha planeación</th>
+                                    <th>Detalle actividad</th>
+                                    <th>Estado</th>
+                                    <th>Ver Hallazgos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for audit in dataAudit %}
+                                <tr>
+                                    <td>{{audit.idAudit}}</td>
+                                    <td>{{audit.auditor}}</td>
+                                    <td>{{audit.state}}</td>
+                                    <td>{{audit.city}}</td>
+                                    <td>{{audit.datePlan}}</td>
+                                    <td>{{audit.actDetail}}</td>
+                                    <td>{{audit.status}}</td>
+                                    
+                                    <td>
+                                        <p>
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#{{audit.idAudit}}" aria-expanded="false" aria-controls="collapseExample">
+                                              ver..
+                                            </button>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="collapse" id="{{audit.idAudit}}">
+                                            <div class="card card-body">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            Alias
+                                                        </div>
+                                                        <div class="col-4">
+                                                            Descripción
+                                                        </div>
+                                                        <div class="col-4">
+                                                            Causas
+                                                        </div>
+                                                    </div>
+                                                <!-- {% for alias in dataAliasUniverse %}
+                                                    <div class="row">
+                                                        {% if alias.codeAudit == audit.code%}
+                                                        <div class="col-4">
+                                                            {{alias.alias}}
+                                                        </div>
+                                                        <div class="col-4">
+                                                            {{alias.description}}
+                                                        </div>
+                                                        <div class="col-4">
+                                                            {% for cause in dataCauseUniverse %}
+                                                                {% if cause.alias == alias.alias %}
+                                                                <p>
+                                                                    {{cause.cause}}
+                                                                </p>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endfor %} -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                
+                                {% endfor %}
+                
+                            </tbody>
+                        </table>
+                      </div>
+                
+                
+                </div>
+                
                 
 
             {% endblock %}
