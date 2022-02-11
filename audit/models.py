@@ -15,7 +15,7 @@ class Audit(models.Model):
     ambient=models.CharField(max_length=25)
     ambientDetail=models.CharField(max_length=50)
     datePlan=models.DateField()
-    dateEject=models.DateField(blank=True, default=date(1111, 11, 11))
+    dateExect=models.DateField(blank=True, default=date(1111, 11, 11))
     actDetail=models.CharField(max_length=500)
     status=models.CharField(max_length=25, default="pendiente")
 

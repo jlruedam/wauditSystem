@@ -35,7 +35,22 @@ def listUniverse(request):
         return JsonResponse(context)
     
     return JsonResponse({"dataMacroProcess":"Washinango"})
-  
+
+def listAudit(request):
+
+    search=request.GET['buscar']
+    type_data=request.GET['type']
+    print("Buscar:" + search)
+    print("Tipo: "+type_data)
+
+    if type_data=='idAudit':
+
+        selectedAudit=list(Audit.objects.filter(idAudit=search).values())[0]
+        print(selectedAudit)
+        return JsonResponse(selectedAudit)
+    
+    return JsonResponse({"dataMacroProcess":"Washinango"})
+     
 #*********Modules
 def index(request):
     dataAudit=Audit.objects.all()
@@ -56,7 +71,14 @@ def subModuleCreateAudit(request):
 
     return render(request, "./audit/subModuleCreateAudit.html", context)
 
+def subModuleExectAudit(request):
+    dataAudit=Audit.objects.all()
 
+    context={
+        "dataAudit":dataAudit,
+    }
+
+    return render(request, "./audit/subModuleExectAudit.html", context)
 #*********load to DataBase
 def audit(request):
     # Esta vista permite interactuar con el submódulo "Crear Auditoría", para guardar una auditoria

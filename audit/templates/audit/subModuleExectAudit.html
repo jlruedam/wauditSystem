@@ -1,0 +1,153 @@
+{% extends "./index.html" %}
+
+{% load static %}
+
+{% block content %}
+   
+
+    {% include "./menuManageAudit.html" %}
+
+
+<div class="submodule">
+   
+
+        <form class="forms" method="post" action="/audit/" id="formAudit">
+            {% csrf_token %}
+            <input type="text" name="action" value="guardar" style="display: none;"/>
+            
+            <div class="formRegister">
+                <div class="formRegister__field">
+                    <label class="forms__label" for="selectIdAudit">
+                        <span>ID Auditoría: </span>
+                    </label>
+                    <select class="forms__select" name="selectIdAudit" id="selectIdAudit">
+                        <option value="...">...</option>
+                        {%for audit in dataAudit %}
+                            <option value="{{audit.idAudit}}">{{audit.idAudit}}</option>
+                        {% endfor %}
+                    </select> 
+                </div>
+
+                <div class="formRegister__field">
+                    <label class="forms__label" for="typeAudit">
+                        <span>Tipo Auditoría: </span>
+                    </label>
+                    <p id="typeAudit">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="auditor">
+                        <span>Auditor: </span>
+                    </label>
+                    <p id="auditor">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="zone">
+                        <span>Zona: </span>
+                    </label>
+                    <p id="zone">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="state">
+                        <span>Departamento: </span>
+                    </label>
+                    <p id="state">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="city">
+                        <span>Municipio: </span>
+                    </label>
+                    <p id="city">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="codeAudit">
+                        <span>Código Auditoría: </span>
+                    </label>
+                    <p id="codeAudit">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="ambient">
+                        <span>Ambiente: </span>
+                    </label>
+                    <p id="ambient">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="ambientDetail">
+                        <span>Detalle ambiente: </span>
+                    </label>
+                    <p id="ambientDetail">
+
+                    </p>
+                </div>
+                <div class="formRegister__field">
+                    <label class="forms__label" for="datePlan">
+                        <span>Fecha planeación: </span>
+                    </label>
+                    <p id="datePlan">
+
+                    </p>
+                </div>
+
+                <div class="formRegister__field">
+                    <label class="forms__label" for="dateExect">
+                        <span>Fecha Ejecución: </span>
+                    </label>
+                    <input type="date" class="forms__text" name="dateExect" id="dateExect">
+                </div>
+                
+                <div class="formRegister__field formRegister__field_xpand">
+                    <label class="forms__label" for="actDetail">
+                        <span>Detalle Actividad: </span>
+                    </label>
+                    <p id="actDetail">
+
+                    </p>
+                </div>
+
+                <div class="formRegister__field formRegister__field_xpand">
+                    <label class="forms__label" for="findings">
+                        <span>Hallazgos </span>
+                    </label>
+                    <p id="findings">
+
+                    </p>
+                    <button id="addFinding">Agregar</button>
+                    <div class="formRegister__field formRegister__field_xpand">
+                        ...
+                    </div>
+                </div>
+
+                
+
+                
+
+                <div class="formRegister__field">
+                    <input type="submit" value="Guardar" id="saveAudit"/>
+                </div>
+            
+
+
+            </div>
+        </form>       
+
+   
+    
+</div>
+
+<script src="{% static 'audit/scripts/loadData.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+{% endblock %}
