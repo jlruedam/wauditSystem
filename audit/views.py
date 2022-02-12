@@ -73,9 +73,12 @@ def subModuleCreateAudit(request):
 
 def subModuleExectAudit(request):
     dataAudit=Audit.objects.all()
+    dataUniverseAlias=UniverseAlias.objects.all()
+
 
     context={
         "dataAudit":dataAudit,
+        "dataUniverseAlias":dataUniverseAlias
     }
 
     return render(request, "./audit/subModuleExectAudit.html", context)

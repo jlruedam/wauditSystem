@@ -20,8 +20,10 @@ class Audit(models.Model):
     status=models.CharField(max_length=25, default="pendiente")
 
 
-# class Auditor(models.Model):
-#     documentID=models.CharField(max_length=25)
-#     nameAuditor=models.CharField(max_length=50)
-    
-    
+class findings(models.Model):
+    idFinding=models.CharField(max_length=50,primary_key=True)
+    idAudit=models.CharField(max_length=50)
+    alias=models.CharField(max_length=100)
+    detailFinding=models.CharField(max_length=500)
+    photoEvidence=models.ImageField()
+    docEvidence=models.BinaryField()

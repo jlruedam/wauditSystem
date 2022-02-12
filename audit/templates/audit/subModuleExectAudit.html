@@ -121,22 +121,74 @@
                     <label class="forms__label" for="findings">
                         <span>Hallazgos </span>
                     </label>
-                    <p id="findings">
-
-                    </p>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>ID Hallazgo</th>
+                                    <th>Alias</th>
+                                    <th>Detalle del Hallazgo</th>
+                                    <th>Evidencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                
+                
+                            </tbody>
+                        </table>
                     <button id="addFinding">Agregar</button>
+
                     <div class="formRegister__field formRegister__field_xpand">
-                        ...
+
+                           
+                        <form class="forms" method="post" action="/findings/" id="formFindings" style="display:none;">
+                            {% csrf_token %}
+                            <input type="text" name="action" value="guardar" style="display: none;"/>
+                            
+                            <div class="formRegister__field">
+                                <label class="forms__label" for="idfinding">
+                                    <span>ID Hallazgo: </span>
+                                </label>
+                                <p class="form__text" id="idfinding">
+                                    Aquí va el id Hallazgo
+                                </p>
+                            </div>
+                            <div class="formRegister__field">
+                                <label class="forms__label" for="selectIdAudit">
+                                    <span>Alias Hallazgo: </span>
+                                </label>
+                                <select class="forms__select" name="selectIdAudit" id="selectIdAudit">
+                                    <option value="...">...</option>
+                                    {%for alias in dataUniverseAlias %}
+                                        <option value="{{alias.alias}}">{{alias.alias}}</option>
+                                    {% endfor %}
+                                </select> 
+                            </div>
+                            <div class="formRegister__field">
+                                <label for="detailAct">
+                                    <span>Detalle del Hallazgo:</span> 
+                                    <textarea class="forms__textarea" name="detailAct" id="detailAct"></textarea>
+                                </label>
+                            </div>
+
+                            <div class="formRegister__field">
+                                <label for="detailAmbient">
+                                    <span>"Link Evidencia": </span> 
+                                    <input type="text" class="forms__text" name="detailAmbient" id="detailAmbient">
+                                </label>
+                            </div>
+                    
+                    
+                            <input type="submit" value="Guardar" id="saveFinding"/>
+                        </form>
                     </div>
+
+                    
                 </div>
 
-                
 
                 
-
-                <div class="formRegister__field">
-                    <input type="submit" value="Guardar" id="saveAudit"/>
-                </div>
             
 
 
