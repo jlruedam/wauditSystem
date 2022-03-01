@@ -95,6 +95,75 @@ def audit(request):
     try:
         print("SI ENTRA AL TRY, PERO...")
         action=request.POST['action']
+        
+
+        context={
+            
+            "dataAuditUniverse":dataAuditUniverse,
+            
+        }
+        # Desde el formulario se envía el parámetro action a través de una etiqueta input no visible, esto
+        # permitirá usar una misma vista para varias acciones y se evitan crear tantas URL´s
+        if action=="guardar":
+
+            typeAudit=request.POST['typeAudit'] 
+            auditors=request.POST['auditors']
+            zone=request.POST['zones']
+            state=request.POST['state']
+            city=request.POST['city'] 
+            codeAudit=request.POST['codeAudit'] 
+            ambient=request.POST['ambient']
+            ambientDetail=request.POST['detailAmbient']
+            datePlan=request.POST['datePlan']
+            actDetail=request.POST['detailAct']
+            idAudit="audit"+str(dataAudit.count())+"-"+codeAudit
+
+            print("EL CÓDIGO ES:" +idAudit)
+            newAudit=Audit(
+                typeAudit=typeAudit,
+                auditor=auditors,
+                zone=zone,
+                state=state,
+                city=city,
+                codeAudit=codeAudit,
+                ambient=ambient,
+                ambientDetail=ambientDetail,
+                datePlan=datePlan,
+                actDetail=actDetail,
+                idAudit=idAudit
+                
+            )
+
+            newAudit.save()
+            return render(request, "./audit/subModuleCreateAudit.html",context )
+
+        elif action=="ejecutar":  
+            print("Ejecutar")
+
+        else:
+            return render(request, "./audit/subModuleCreateAudit.html", context)
+
+        
+    except Exception as e:
+        print("AL PARECER HAY UN ERROR")
+        print(e)
+        context={
+            "dataAuditUniverse":dataAuditUniverse,
+            
+        }
+        return render(request, "./audit/subModuleCreateAudit.html",context)
+
+def finding(request):
+    
+    dataAuditUniverse=UniverseAudit.objects.all()
+    dataAudit=Audit.objects.all()
+    
+    
+    # Se captura excepción para utilizar el caso inicial cuando la vista se llama desde el botón sin enviar parámetros 
+    # a través del POST; es cuando action no se envía a través del POST.
+    try:
+        
+        action=request.POST['action']
         typeAudit=request.POST['typeAudit'] 
         auditors=request.POST['auditors']
         zone=request.POST['zones']
@@ -107,7 +176,6 @@ def audit(request):
         actDetail=request.POST['detailAct']
         idAudit="audit"+str(dataAudit.count())+"-"+codeAudit
 
-        print("EL CÓDIGO ES:" +idAudit)
         
 
         context={
@@ -135,10 +203,10 @@ def audit(request):
             )
 
             newAudit.save()
-            return render(request, "./audit/subModuleCreateAudit.html",context )
+            return render(request, "./audit/subModuleEjecteAudit.html",context )
 
         else:
-            return render(request, "./audit/subModuleCreateAudit.html", context)
+            return render(request, "./audit/subModuleEjectAudit.html", context)
 
     except Exception as e:
         print("AL PARECER HAY UN ERROR")
@@ -147,4 +215,4 @@ def audit(request):
             "dataAuditUniverse":dataAuditUniverse,
             
         }
-        return render(request, "./audit/subModuleCreateAudit.html",context)
+        return render(request, "./audit/subModuleEjectAudit.html",context)

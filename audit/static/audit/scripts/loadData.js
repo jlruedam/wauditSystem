@@ -1,6 +1,8 @@
 //Cargar información de las auditorías digitadas en el Módulo de auditorias
 selectIdAudit=document.getElementById("selectIdAudit")
 selectIdAudit.addEventListener("change",event=>{
+
+
     var idAuditValue= $("#selectIdAudit").val();
     
 
